@@ -1,0 +1,15 @@
+SpeechRecognition
+PyAudio
+pyttsx3
+pyautogui
+keyboard
+mouse
+pywinauto
+pygetwindow
+psutil
+screen-brightness-control
+pycaw
+comtypes
+selenium
+webdriver-manager
+python-dotenv
