@@ -1,7 +1,7 @@
 """
 assistant.py
 
-Main assistant controller.
+Main VoicePilot Controller
 """
 
 from speech.speech_to_text import SpeechToText
@@ -19,25 +19,33 @@ from automation.system import SystemController
 
 class VoiceAssistant:
 
-    def __init__(self):
+    def __init__(self, callback=None):
 
         self.listener = SpeechToText()
-
         self.speaker = TextToSpeech()
 
         self.parser = CommandParser()
 
         self.apps = AppController()
-
         self.browser = BrowserController()
-
         self.explorer = ExplorerController()
-
         self.keyboard = KeyboardController()
-
         self.mouse = MouseController()
-
         self.system = SystemController()
+
+        # GUI callback
+        self.callback = callback
+
+    # ------------------------------
+
+    def update(self, message):
+
+        print(message)
+
+        if self.callback:
+            self.callback(message)
+
+    # ------------------------------
 
     def execute(self, command):
 
@@ -45,13 +53,15 @@ class VoiceAssistant:
 
         intent = data["intent"]
 
-        print(data)
+        self.update(f"Command : {command}")
 
         if intent == "OPEN_APP":
 
             target = data["target"]
 
             if target:
+
+                self.update(f"Opening {target}")
 
                 self.speaker.speak(f"Opening {target}")
 
@@ -63,38 +73,39 @@ class VoiceAssistant:
 
             if query:
 
+                self.update(f"Searching Google : {query}")
+
                 self.speaker.speak(f"Searching {query}")
 
                 self.browser.search_google(query)
 
-        elif intent == "UNKNOWN":
+        else:
+
+            self.update("Unknown Command")
 
             self.speaker.speak(
-                "Sorry, I did not understand that command."
+                "Sorry, I did not understand."
             )
+
+    # ------------------------------
 
     def start(self):
 
-        self.speaker.speak("VoicePilot is ready.")
+        self.speaker.speak("VoicePilot Started")
 
         while True:
 
+            self.update("Listening...")
+
             command = self.listener.listen()
 
-            if not command:
+            if command == "":
                 continue
 
             if command in ["exit", "quit", "stop"]:
 
-                self.speaker.speak("Goodbye.")
+                self.speaker.speak("Goodbye")
 
                 break
 
             self.execute(command)
-
-
-if __name__ == "__main__":
-
-    assistant = VoiceAssistant()
-
-    assistant.start()

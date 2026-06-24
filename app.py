@@ -1,9 +1,3 @@
-"""
-app.py
-
-Main entry point for VoicePilot.
-"""
-
 import threading
 
 from assistant import VoiceAssistant
@@ -16,24 +10,22 @@ class VoicePilotApp:
 
         self.gui = MainWindow()
 
-        self.assistant = VoiceAssistant()
+        self.assistant = VoiceAssistant(
+            callback=self.gui.log
+        )
 
-    def start_assistant(self):
-
-        self.gui.set_status("Listening...")
-
-        self.gui.log("VoicePilot Started")
+    def run_assistant(self):
 
         self.assistant.start()
 
     def run(self):
 
-        assistant_thread = threading.Thread(
-            target=self.start_assistant,
+        thread = threading.Thread(
+            target=self.run_assistant,
             daemon=True
         )
 
-        assistant_thread.start()
+        thread.start()
 
         self.gui.run()
 

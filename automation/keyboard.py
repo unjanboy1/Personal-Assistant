@@ -1,69 +1,85 @@
 """
-browser.py
+keyboard.py
 
-Browser automation for VoicePilot.
+Keyboard automation for VoicePilot.
 """
 
-import webbrowser
-from urllib.parse import quote
+import pyautogui
 
 
-class BrowserController:
+class KeyboardController:
 
-    def open_google(self):
+    def type_text(self, text):
 
-        webbrowser.open("https://www.google.com")
+        pyautogui.write(text, interval=0.05)
 
-        print("Google opened.")
+        print(f"Typed: {text}")
 
-    def open_website(self, url):
+    def press_key(self, key):
 
-        if not url.startswith("http"):
-            url = "https://" + url
+        pyautogui.press(key)
 
-        webbrowser.open(url)
+        print(f"Pressed: {key}")
 
-        print(f"Opened {url}")
+    def hotkey(self, *keys):
 
-    def search_google(self, query):
+        pyautogui.hotkey(*keys)
 
-        query = quote(query)
+        print(f"Hotkey: {' + '.join(keys)}")
 
-        url = f"https://www.google.com/search?q={query}"
+    def copy(self):
 
-        webbrowser.open(url)
+        pyautogui.hotkey("ctrl", "c")
 
-        print(f"Searching: {query}")
+    def paste(self):
+
+        pyautogui.hotkey("ctrl", "v")
+
+    def cut(self):
+
+        pyautogui.hotkey("ctrl", "x")
+
+    def undo(self):
+
+        pyautogui.hotkey("ctrl", "z")
+
+    def select_all(self):
+
+        pyautogui.hotkey("ctrl", "a")
 
 
 if __name__ == "__main__":
 
-    browser = BrowserController()
+    keyboard = KeyboardController()
 
     while True:
 
-        print("\n===== Browser Test =====")
-        print("1. Open Google")
-        print("2. Search Google")
-        print("3. Open Website")
-        print("4. Exit")
+        print("\n====== Keyboard Test ======")
+        print("1. Type Text")
+        print("2. Press Enter")
+        print("3. Copy")
+        print("4. Paste")
+        print("5. Exit")
 
         choice = input("> ")
 
         if choice == "1":
-            browser.open_google()
+
+            text = input("Text : ")
+
+            keyboard.type_text(text)
 
         elif choice == "2":
 
-            query = input("Search : ")
-
-            browser.search_google(query)
+            keyboard.press_key("enter")
 
         elif choice == "3":
 
-            site = input("Website : ")
-
-            browser.open_website(site)
+            keyboard.copy()
 
         elif choice == "4":
+
+            keyboard.paste()
+
+        elif choice == "5":
             break
