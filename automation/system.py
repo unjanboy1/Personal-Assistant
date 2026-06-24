@@ -1,94 +1,106 @@
 """
-mouse.py
+system.py
 
-Mouse automation for VoicePilot.
+System automation for VoicePilot.
 """
 
+import os
 import pyautogui
+import screen_brightness_control as sbc
 
 
-class MouseController:
+class SystemController:
 
-    def click(self):
+    def shutdown(self):
+        os.system("shutdown /s /t 1")
 
-        pyautogui.click()
+    def restart(self):
+        os.system("shutdown /r /t 1")
 
-        print("Left Click")
+    def lock(self):
+        os.system("rundll32.exe user32.dll,LockWorkStation")
 
-    def double_click(self):
+    def sleep(self):
+        os.system("rundll32.exe powrprof.dll,SetSuspendState Sleep")
 
-        pyautogui.doubleClick()
+    # -------------------------
+    # Screenshot
+    # -------------------------
 
-        print("Double Click")
+    def screenshot(self, filename="screenshot.png"):
 
-    def right_click(self):
+        image = pyautogui.screenshot()
 
-        pyautogui.rightClick()
+        image.save(filename)
 
-        print("Right Click")
+        print(f"Screenshot saved as {filename}")
 
-    def move(self, x, y):
+    # -------------------------
+    # Brightness
+    # -------------------------
 
-        pyautogui.moveTo(x, y, duration=0.4)
+    def increase_brightness(self):
 
-        print(f"Moved to ({x}, {y})")
+        current = sbc.get_brightness()[0]
 
-    def scroll_up(self):
+        sbc.set_brightness(min(current + 10, 100))
 
-        pyautogui.scroll(500)
+        print("Brightness Increased")
 
-    def scroll_down(self):
+    def decrease_brightness(self):
 
-        pyautogui.scroll(-500)
+        current = sbc.get_brightness()[0]
 
-    def drag(self, x, y):
+        sbc.set_brightness(max(current - 10, 0))
 
-        pyautogui.dragTo(x, y, duration=0.5)
+        print("Brightness Decreased")
+
+    def set_brightness(self, value):
+
+        value = max(0, min(100, value))
+
+        sbc.set_brightness(value)
+
+        print(f"Brightness set to {value}%")
 
 
 if __name__ == "__main__":
 
-    mouse = MouseController()
+    system = SystemController()
 
     while True:
 
-        print("\n====== Mouse Test ======")
-        print("1. Click")
-        print("2. Double Click")
-        print("3. Right Click")
-        print("4. Move")
-        print("5. Scroll Up")
-        print("6. Scroll Down")
-        print("7. Exit")
+        print("\n====== System Menu ======")
+        print("1. Screenshot")
+        print("2. Increase Brightness")
+        print("3. Decrease Brightness")
+        print("4. Set Brightness")
+        print("5. Lock PC")
+        print("6. Exit")
 
         choice = input("> ")
 
         if choice == "1":
 
-            mouse.click()
+            system.screenshot()
 
         elif choice == "2":
 
-            mouse.double_click()
+            system.increase_brightness()
 
         elif choice == "3":
 
-            mouse.right_click()
+            system.decrease_brightness()
 
         elif choice == "4":
 
-            x = int(input("X : "))
-            y = int(input("Y : "))
+            value = int(input("Brightness (0-100): "))
 
-            mouse.move(x, y)
+            system.set_brightness(value)
 
         elif choice == "5":
 
-            mouse.scroll_up()
+            system.lock()
 
         elif choice == "6":
-
-            mouse.scroll_down()
-
-        elif choice == "7":
             break
