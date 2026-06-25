@@ -1,7 +1,7 @@
 """
 assistant.py
 
-Main VoicePilot Controller
+VoicePilot Main Controller
 """
 
 from speech.speech_to_text import SpeechToText
@@ -20,14 +20,12 @@ from automation.system import SystemController
 class VoiceAssistant:
 
     def __init__(self, callback=None):
-        # Hardware interfaces
+
         self.listener = SpeechToText()
         self.speaker = TextToSpeech()
 
-        # NLP Command Parser
         self.parser = CommandParser()
 
-        # Automation Subsystems
         self.apps = AppController()
         self.browser = BrowserController()
         self.explorer = ExplorerController()
@@ -35,123 +33,217 @@ class VoiceAssistant:
         self.mouse = MouseController()
         self.system = SystemController()
 
-        # GUI callback hook
         self.callback = callback
 
-    # -------------------------------------------------------------------------
+    # --------------------------------------------------------
+
     def update(self, message):
-        """Prints to terminal and updates the Tkinter UI logs."""
+
         print(message)
+
         if self.callback:
             self.callback(message)
 
-    # -------------------------------------------------------------------------
-    def execute(self, command):
-        """Processes the command, checks the intent, and triggers automation."""
-        # Clean up input string
-        command_clean = command.lower().strip()
-        
-        # 0. Quick Global Overrides (Optional bypass for simple logic)
-        if command_clean in ["hello", "hi", "hey"]:
-            self.update("Hello! How can I help you today?")
-            self.speaker.speak("Hello! How can I help you today?")
-            return
+    # --------------------------------------------------------
 
-        # Fetch intent data from our Command Parser
+    def execute(self, command):
+
         data = self.parser.parse(command)
-        intent = data.get("intent")
+
+        print(data)
+
+        intent = data["intent"]
 
         self.update(f"Command : {command}")
 
-        # 1. APPLICATION AUTOMATION
+        # ----------------------------------------------------
+        # OPEN APPLICATION
+        # ----------------------------------------------------
+
         if intent == "OPEN_APP":
-            target = data.get("target")
+
+            target = data["target"]
+
             if target:
-                self.update(f"Opening {target}...")
+
+                self.update(f"Opening {target}")
+
                 self.speaker.speak(f"Opening {target}")
+
                 self.apps.open_app(target)
 
-        elif intent == "CLOSE_APP":
-            target = data.get("target")
-            if target:
-                self.update(f"Closing {target}...")
-                self.speaker.speak(f"Closing {target}")
-                # Make sure your AppController has a close_app method!
-                self.apps.close_app(target)
+        # ----------------------------------------------------
+        # GOOGLE SEARCH
+        # ----------------------------------------------------
 
-        # 2. BROWSER AUTOMATION
         elif intent == "SEARCH_WEB":
-            query = data.get("query")
+
+            query = data["query"]
+
             if query:
-                self.update(f"Searching Google for: {query}")
+
+                self.update(f"Searching Google for {query}")
+
                 self.speaker.speak(f"Searching {query}")
+
                 self.browser.search_google(query)
 
-        # 3. FILE EXPLORER AUTOMATION
+        # ----------------------------------------------------
+        # OPEN DRIVE
+        # ----------------------------------------------------
+
+        elif intent == "OPEN_DRIVE":
+
+            drive = data["target"]
+
+            if drive:
+
+                self.update(f"Opening {drive} drive")
+
+                self.speaker.speak(f"Opening {drive} drive")
+
+                self.explorer.open_drive(drive)
+
+        # ----------------------------------------------------
+        # OPEN FOLDER
+        # ----------------------------------------------------
+
         elif intent == "OPEN_FOLDER":
-            path = data.get("path")
-            if path:
-                self.update(f"Opening directory: {path}")
-                self.explorer.open_folder(path)
 
-        # 4. OS / HARDWARE SYSTEM CONTROLS
-        elif intent == "VOLUME_UP":
-            self.update("Increasing volume.")
-            self.system.increase_volume()
+            folder = data["target"]
 
-        elif intent == "VOLUME_DOWN":
-            self.update("Decreasing volume.")
-            self.system.decrease_volume()
+            if folder:
 
-        elif intent == "MUTE_SYSTEM":
-            self.update("Toggling system mute.")
-            self.system.mute()
+                self.update(f"Opening {folder}")
 
-        elif intent == "SYSTEM_SHUTDOWN":
-            self.update("Initiating system shutdown.")
-            self.speaker.speak("Shutting down the system. Goodbye.")
-            self.system.shutdown()
+                self.explorer.open_folder(folder)
 
-        # 5. KEYBOARD / MOUSE AUTOMATION (MACROS)
-        elif intent == "PRESS_KEY":
-            key = data.get("key")
-            if key:
-                self.keyboard.press(key)
+        # ----------------------------------------------------
+        # BRIGHTNESS
+        # ----------------------------------------------------
 
-        elif intent == "CLICK_MOUSE":
-            x, y = data.get("x"), data.get("y")
-            if x is not None and y is not None:
-                self.mouse.click(x, y)
+        elif intent == "BRIGHTNESS":
 
-        # 6. STANDALONE CHAT INTENTS
-        elif intent == "GREETING":
-            reply = "Hello! I am ready to assist you."
-            self.update(reply)
-            self.speaker.speak(reply)
+            action = data["action"]
 
-        # FALLBACK ENGINE
+            if action == "increase":
+
+                self.update("Increasing Brightness")
+
+                self.speaker.speak("Increasing Brightness")
+
+                self.system.increase_brightness()
+
+            elif action == "decrease":
+
+                self.update("Decreasing Brightness")
+
+                self.speaker.speak("Decreasing Brightness")
+
+                self.system.decrease_brightness()
+
+            elif action == "maximum":
+
+                self.system.set_brightness(100)
+
+            elif action == "minimum":
+
+                self.system.set_brightness(0)
+
+        # ----------------------------------------------------
+        # SCREENSHOT
+        # ----------------------------------------------------
+
+        elif intent == "SCREENSHOT":
+
+            self.update("Taking Screenshot")
+
+            self.speaker.speak("Taking Screenshot")
+
+            self.system.screenshot()
+
+        # ----------------------------------------------------
+        # LOCK
+        # ----------------------------------------------------
+
+        elif intent == "LOCK":
+
+            self.update("Locking Computer")
+
+            self.speaker.speak("Locking Computer")
+
+            self.system.lock()
+
+        # ----------------------------------------------------
+        # KEYBOARD
+        # ----------------------------------------------------
+
+        elif intent == "TYPE":
+
+            text = data["text"]
+
+            if text:
+
+                self.update(f"Typing : {text}")
+
+                self.keyboard.type_text(text)
+
+        # ----------------------------------------------------
+        # MOUSE
+        # ----------------------------------------------------
+
+        elif intent == "MOUSE":
+
+            action = data["action"]
+
+            if action == "click":
+
+                self.mouse.click()
+
+            elif action == "double":
+
+                self.mouse.double_click()
+
+            elif action == "right":
+
+                self.mouse.right_click()
+
+        # ----------------------------------------------------
+
         else:
-            self.update("Unknown Command")
-            self.speaker.speak("Sorry, I did not understand.")
 
-    # -------------------------------------------------------------------------
+            self.update("Unknown Command")
+
+            self.speaker.speak(
+                "Sorry, I did not understand."
+            )
+
+    # --------------------------------------------------------
+
     def start(self):
-        """Starts the core listener loop (Runs inside a background worker thread)."""
+
         self.speaker.speak("VoicePilot Started")
 
         while True:
+
             self.update("Listening...")
+
             command = self.listener.listen()
 
-            # Ignore empty strings (e.g., ambient room noise clicks)
-            if not command or command.strip() == "":
+            if not command:
                 continue
 
-            # Check core system breakdown hooks
-            if command.lower().strip() in ["exit", "quit", "stop", "shut down"]:
-                self.update("Terminating VoicePilot session...")
+            if command.lower() in ["exit", "quit", "stop"]:
+
                 self.speaker.speak("Goodbye")
+
                 break
 
-            # Execute valid verbal payloads
             self.execute(command)
+
+
+if __name__ == "__main__":
+
+    assistant = VoiceAssistant()
+
+    assistant.start()
