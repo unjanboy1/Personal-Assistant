@@ -4,6 +4,10 @@ assistant.py
 VoicePilot Main Controller
 """
 
+import os
+import subprocess
+import psutil
+
 from speech.speech_to_text import SpeechToText
 from speech.text_to_speech import TextToSpeech
 
@@ -15,9 +19,6 @@ from automation.explorer import ExplorerController
 from automation.keyboard import KeyboardController
 from automation.mouse import MouseController
 from automation.system import SystemController
-
-import subprocess
-import psutil
 
 
 class VoiceAssistant:
@@ -70,10 +71,8 @@ class VoiceAssistant:
             try:
 
                 if proc.name().lower() in [
-
                     "windowscamera.exe",
                     "camera.exe"
-
                 ]:
 
                     proc.kill()
@@ -459,25 +458,22 @@ class VoiceAssistant:
             command = self.listener.listen()
 
             if command is None:
-
                 continue
 
             command = command.strip()
 
             if command == "":
-
                 continue
 
             if command.lower() in [
-
                 "exit",
                 "quit",
-                "stop assistant"
-
+                "stop assistant",
+                "exit program",
+                "terminate"
             ]:
-
                 self.speaker.speak("Goodbye")
-
-                break
+                # Force kills thread loops and the core application instantly
+                os._exit(0)
 
             self.execute(command)
