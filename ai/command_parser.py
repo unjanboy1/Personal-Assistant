@@ -57,10 +57,66 @@ class CommandParser:
             data["query"] = query.strip()
 
         # ==================================================
+        # OPEN DRIVE
+        # ==================================================
+        elif intent == "OPEN_DRIVE":
+            if "c" in command:
+                data["target"] = "C"
+            elif "d" in command:
+                data["target"] = "D"
+            elif "e" in command:
+                data["target"] = "E"
+            elif "f" in command:
+                data["target"] = "F"
+
+        # ==================================================
+        # OPEN FOLDER
+        # ==================================================
+        elif intent == "OPEN_FOLDER":
+            folder = command
+            folder = folder.replace("open", "")
+            folder = folder.replace("folder", "")
+            data["target"] = folder.strip()
+
+        # ==================================================
+        # CAMERA
+        # ==================================================
+        elif intent == "OPEN_CAMERA":
+            data["action"] = "open"
+
+        elif intent == "CLOSE_CAMERA":
+            data["action"] = "close"
+
+        # ==================================================
+        # BRIGHTNESS
+        # ==================================================
+        elif intent == "BRIGHTNESS":
+            if "increase" in command or "up" in command:
+                data["action"] = "increase"
+            elif "decrease" in command or "down" in command:
+                data["action"] = "decrease"
+            elif "maximum" in command or "max" in command:
+                data["action"] = "maximum"
+            elif "minimum" in command or "min" in command:
+                data["action"] = "minimum"
+
+        # ==================================================
+        # VOLUME
+        # ==================================================
+        elif intent == "VOLUME":
+            if "increase" in command or "up" in command:
+                data["action"] = "increase"
+            elif "decrease" in command or "down" in command:
+                data["action"] = "decrease"
+            elif "mute" in command:
+                data["action"] = "mute"
+            elif "unmute" in command:
+                data["action"] = "unmute"
+
+        # ==================================================
         # KEYBOARD
         # ==================================================
         elif intent == "KEYBOARD":
-            # 1. Define the key_map dictionary clearly so it can be read safely
             key_map = {
                 "enter": "enter",
                 "return": "enter",
@@ -85,26 +141,18 @@ class CommandParser:
                 "insert": "insert"
             }
 
-            # 2. Match macro actions
             if "copy" in command or "copy text" in command:
                 data["action"] = "copy"
-
             elif "paste" in command or "paste text" in command:
                 data["action"] = "paste"
-
             elif "cut" in command or "cut text" in command:
                 data["action"] = "cut"
-
             elif "undo" in command or "undo text" in command:
                 data["action"] = "undo"
-
             elif "redo" in command or "redo text" in command:
                 data["action"] = "redo"
-
             elif "select all" in command or "select" in command or "select text" in command:
                 data["action"] = "select_all"
-
-            # 3. Fallback to basic button presses
             else:
                 key = command
                 if key.startswith("press "):
