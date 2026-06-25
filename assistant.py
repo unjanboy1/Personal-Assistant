@@ -234,13 +234,18 @@ class VoiceAssistant:
 
             elif action == "maximum":
 
+                self.speaker.speak("Setting brightness to maximum")
+
                 self.system.set_brightness(100)
 
             elif action == "minimum":
 
+                self.speaker.speak("Setting brightness to minimum")
+
                 self.system.set_brightness(0)
 
             return
+            
         # ===============================================
         # VOLUME
         # ===============================================
@@ -287,11 +292,15 @@ class VoiceAssistant:
 
                 self.update("Copy")
 
+                self.speaker.speak("Copying text")
+
                 self.keyboard.copy()
 
             elif action == "paste":
 
                 self.update("Paste")
+
+                self.speaker.speak("Pasting text")
 
                 self.keyboard.paste()
 
@@ -299,11 +308,15 @@ class VoiceAssistant:
 
                 self.update("Cut")
 
+                self.speaker.speak("Cutting text")
+
                 self.keyboard.cut()
 
             elif action == "undo":
 
                 self.update("Undo")
+
+                self.speaker.speak("Undoing action")
 
                 self.keyboard.undo()
 
@@ -311,11 +324,15 @@ class VoiceAssistant:
 
                 self.update("Redo")
 
+                self.speaker.speak("Redoing action")
+
                 self.keyboard.hotkey("ctrl", "y")
 
             elif action == "select_all":
 
                 self.update("Select All")
+
+                self.speaker.speak("Selecting everything")
 
                 self.keyboard.select_all()
 
@@ -343,7 +360,7 @@ class VoiceAssistant:
 
                 self.update(f"Typing : {text}")
 
-                self.speaker.speak("Typing")
+                self.speaker.speak("Typing context now")
 
                 self.keyboard.type_text(text)
 
@@ -359,21 +376,31 @@ class VoiceAssistant:
 
             if action == "click":
 
+                self.speaker.speak("Left clicking")
+
                 self.mouse.click()
 
             elif action == "double":
+
+                self.speaker.speak("Double clicking")
 
                 self.mouse.double_click()
 
             elif action == "right":
 
+                self.speaker.speak("Right clicking")
+
                 self.mouse.right_click()
 
             elif action == "scroll_up":
 
+                self.speaker.speak("Scrolling up")
+
                 self.mouse.scroll_up()
 
             elif action == "scroll_down":
+
+                self.speaker.speak("Scrolling down")
 
                 self.mouse.scroll_down()
 
@@ -423,7 +450,7 @@ class VoiceAssistant:
 
     def start(self):
 
-        self.speaker.speak("VoicePilot Started")
+        self.speaker.speak("Voice Pilot Started")
 
         while True:
 
