@@ -4,6 +4,7 @@ system.py
 System automation for VoicePilot.
 """
 
+
 import os
 import pyautogui
 import screen_brightness_control as sbc
