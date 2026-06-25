@@ -1,13 +1,10 @@
 """
 command_parser.py
 
-Converts voice commands into structured actions.
+Converts voice commands into structured data.
 """
 
-try:
-    from ai.intent_detector import IntentDetector
-except ModuleNotFoundError:
-    from intent_detector import IntentDetector
+from ai.intent_detector import IntentDetector
 
 
 class CommandParser:
@@ -29,66 +26,77 @@ class CommandParser:
             "text": None
         }
 
-        # =====================================================
+        # ==================================================
         # OPEN APPLICATION
-        # =====================================================
+        # ==================================================
 
         if intent == "OPEN_APP":
 
-            for word in ["open", "launch", "start"]:
+            words = ["open", "launch", "start"]
+
+            for word in words:
 
                 if command.startswith(word):
 
-                    target = command.replace(word, "", 1).strip()
+                    app = command.replace(word, "", 1).strip()
 
-                    target = target.replace("application", "")
-                    target = target.replace("app", "")
-
-                    data["target"] = target.strip()
+                    data["target"] = app
 
                     break
 
-        # =====================================================
+        # ==================================================
+        # CLOSE APPLICATION
+        # ==================================================
+
+        elif intent == "CLOSE_APP":
+
+            words = ["close", "exit", "quit"]
+
+            for word in words:
+
+                if command.startswith(word):
+
+                    app = command.replace(word, "", 1).strip()
+
+                    data["target"] = app
+
+                    break
+
+        # ==================================================
         # GOOGLE SEARCH
-        # =====================================================
+        # ==================================================
 
         elif intent == "SEARCH_WEB":
 
             query = command
 
-            words = [
-                "search",
-                "google",
-                "for",
-                "search for"
-            ]
+            for word in ["search", "google", "for"]:
 
-            for w in words:
-                query = query.replace(w, "")
+                query = query.replace(word, "")
 
             data["query"] = query.strip()
 
-        # =====================================================
+        # ==================================================
         # OPEN DRIVE
-        # =====================================================
+        # ==================================================
 
         elif intent == "OPEN_DRIVE":
 
-            if "c drive" in command or "drive c" in command:
+            if "c" in command:
                 data["target"] = "C"
 
-            elif "d drive" in command or "drive d" in command:
+            elif "d" in command:
                 data["target"] = "D"
 
-            elif "e drive" in command or "drive e" in command:
+            elif "e" in command:
                 data["target"] = "E"
 
-            elif "f drive" in command or "drive f" in command:
+            elif "f" in command:
                 data["target"] = "F"
 
-        # =====================================================
+        # ==================================================
         # OPEN FOLDER
-        # =====================================================
+        # ==================================================
 
         elif intent == "OPEN_FOLDER":
 
@@ -99,9 +107,21 @@ class CommandParser:
 
             data["target"] = folder.strip()
 
-        # =====================================================
+        # ==================================================
+        # CAMERA
+        # ==================================================
+
+        elif intent == "OPEN_CAMERA":
+
+            data["action"] = "open"
+
+        elif intent == "CLOSE_CAMERA":
+
+            data["action"] = "close"
+
+        # ==================================================
         # BRIGHTNESS
-        # =====================================================
+        # ==================================================
 
         elif intent == "BRIGHTNESS":
 
@@ -121,9 +141,9 @@ class CommandParser:
 
                 data["action"] = "minimum"
 
-        # =====================================================
+        # ==================================================
         # VOLUME
-        # =====================================================
+        # ==================================================
 
         elif intent == "VOLUME":
 
@@ -139,84 +159,155 @@ class CommandParser:
 
                 data["action"] = "mute"
 
-        # =====================================================
+            elif "unmute" in command:
+
+                data["action"] = "unmute"
+        # ==================================================
+        # KEYBOARD
+        # ==================================================
+
+        elif intent == "KEYBOARD":
+
+            key_map = {
+
+                "enter": "enter",
+                "return": "enter",
+
+                "tab": "tab",
+
+                "backspace": "backspace",
+
+                "delete": "delete",
+
+                "space": "space",
+
+                "escape": "esc",
+                "esc": "esc",
+
+                "home": "home",
+                "end": "end",
+
+                "page up": "pageup",
+                "page down": "pagedown",
+
+                "up": "up",
+                "down": "down",
+                "left": "left",
+                "right": "right",
+
+                "caps lock": "capslock",
+                "capslock": "capslock",
+
+                "num lock": "numlock",
+                "numlock": "numlock",
+
+                "scroll lock": "scrolllock",
+                "scrolllock": "scrolllock",
+
+                "insert": "insert"
+            }
+
+            if "copy" in command:
+
+                data["action"] = "copy"
+
+            elif "paste" in command:
+
+                data["action"] = "paste"
+
+            elif "cut" in command:
+
+                data["action"] = "cut"
+
+            elif "undo" in command:
+
+                data["action"] = "undo"
+
+            elif "redo" in command:
+
+                data["action"] = "redo"
+
+            elif "select all" in command:
+
+                data["action"] = "select_all"
+
+            else:
+
+                key = command
+
+                if key.startswith("press "):
+                    key = key.replace("press ", "", 1).strip()
+
+                data["action"] = "press"
+                data["target"] = key_map.get(key, key)
+
+        # ==================================================
+        # TYPE TEXT
+        # ==================================================
+
+        elif intent == "TYPE":
+
+            text = command
+
+            if text.startswith("type "):
+
+                text = text.replace("type ", "", 1)
+
+            elif text.startswith("write "):
+
+                text = text.replace("write ", "", 1)
+
+            data["text"] = text.strip()
+
+        # ==================================================
+        # MOUSE
+        # ==================================================
+
+        elif intent == "MOUSE":
+
+            if "double" in command:
+
+                data["action"] = "double"
+
+            elif "right" in command:
+
+                data["action"] = "right"
+
+            elif "left" in command:
+
+                data["action"] = "click"
+
+            elif "scroll up" in command:
+
+                data["action"] = "scroll_up"
+
+            elif "scroll down" in command:
+
+                data["action"] = "scroll_down"
+
+            else:
+
+                data["action"] = "click"
+
+        # ==================================================
         # SCREENSHOT
-        # =====================================================
+        # ==================================================
 
         elif intent == "SCREENSHOT":
 
             data["action"] = "take"
 
-        # =====================================================
-        # LOCK
-        # =====================================================
+        # ==================================================
+        # LOCK SCREEN
+        # ==================================================
 
         elif intent == "LOCK":
 
             data["action"] = "lock"
 
-        # =====================================================
-        # KEYBOARD COMMANDS
-        # =====================================================
-
-        elif "copy" == command:
-
-            data["intent"] = "KEYBOARD"
-            data["action"] = "copy"
-
-        elif "paste" == command:
-
-            data["intent"] = "KEYBOARD"
-            data["action"] = "paste"
-
-        elif "cut" == command:
-
-            data["intent"] = "KEYBOARD"
-            data["action"] = "cut"
-
-        elif "undo" == command:
-
-            data["intent"] = "KEYBOARD"
-            data["action"] = "undo"
-
-        elif "select all" in command:
-
-            data["intent"] = "KEYBOARD"
-            data["action"] = "select_all"
-
-        elif command.startswith("press "):
-
-            key = command.replace("press", "", 1).strip()
-
-            data["intent"] = "KEYBOARD"
-            data["action"] = "press"
-            data["target"] = key
-
-        elif command.startswith("type "):
-
-            text = command.replace("type", "", 1).strip()
-
-            data["intent"] = "TYPE"
-            data["text"] = text
-
-        # =====================================================
-        # MOUSE
-        # =====================================================
-
-        elif "double click" in command:
-
-            data["intent"] = "MOUSE"
-            data["action"] = "double"
-
-        elif "right click" in command:
-
-            data["intent"] = "MOUSE"
-            data["action"] = "right"
-
-        elif "click" == command:
-
-            data["intent"] = "MOUSE"
-            data["action"] = "click"
+        # ==================================================
+        # RETURN
+        # ==================================================
 
         return data
 
@@ -227,8 +318,9 @@ if __name__ == "__main__":
 
     while True:
 
-        command = input("\nCommand : ")
+        cmd = input("Command : ")
 
-        result = parser.parse(command)
+        if cmd.lower() == "exit":
+            break
 
-        print(result)
+        print(parser.parse(cmd))

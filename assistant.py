@@ -16,6 +16,9 @@ from automation.keyboard import KeyboardController
 from automation.mouse import MouseController
 from automation.system import SystemController
 
+import subprocess
+import psutil
+
 
 class VoiceAssistant:
 
@@ -46,6 +49,41 @@ class VoiceAssistant:
 
     # --------------------------------------------------
 
+    def open_camera(self):
+
+        try:
+
+            subprocess.Popen("start microsoft.windows.camera:", shell=True)
+
+            self.update("Camera Opened")
+
+        except Exception as e:
+
+            print(e)
+
+    # --------------------------------------------------
+
+    def close_camera(self):
+
+        for proc in psutil.process_iter():
+
+            try:
+
+                if proc.name().lower() in [
+
+                    "windowscamera.exe",
+                    "camera.exe"
+
+                ]:
+
+                    proc.kill()
+
+            except Exception:
+
+                pass
+
+    # --------------------------------------------------
+
     def execute(self, command):
 
         data = self.parser.parse(command)
@@ -56,9 +94,9 @@ class VoiceAssistant:
 
         self.update(f"Command : {command}")
 
-        # ======================================================
+        # ===============================================
         # OPEN APPLICATION
-        # ======================================================
+        # ===============================================
 
         if intent == "OPEN_APP":
 
@@ -74,9 +112,27 @@ class VoiceAssistant:
 
             return
 
-        # ======================================================
-        # SEARCH GOOGLE
-        # ======================================================
+        # ===============================================
+        # CLOSE APPLICATION
+        # ===============================================
+
+        elif intent == "CLOSE_APP":
+
+            target = data["target"]
+
+            if target:
+
+                self.update(f"Closing {target}")
+
+                self.speaker.speak(f"Closing {target}")
+
+                self.apps.close_app(target)
+
+            return
+
+        # ===============================================
+        # GOOGLE SEARCH
+        # ===============================================
 
         elif intent == "SEARCH_WEB":
 
@@ -84,7 +140,7 @@ class VoiceAssistant:
 
             if query:
 
-                self.update(f"Searching Google for {query}")
+                self.update(f"Searching {query}")
 
                 self.speaker.speak(f"Searching {query}")
 
@@ -92,9 +148,9 @@ class VoiceAssistant:
 
             return
 
-        # ======================================================
-        # OPEN DRIVE
-        # ======================================================
+        # ===============================================
+        # DRIVE
+        # ===============================================
 
         elif intent == "OPEN_DRIVE":
 
@@ -108,15 +164,11 @@ class VoiceAssistant:
 
                 self.explorer.open_drive(drive)
 
-            else:
-
-                self.update("Please specify the drive.")
-
             return
 
-        # ======================================================
-        # OPEN FOLDER
-        # ======================================================
+        # ===============================================
+        # FOLDER
+        # ===============================================
 
         elif intent == "OPEN_FOLDER":
 
@@ -126,15 +178,39 @@ class VoiceAssistant:
 
                 self.update(f"Opening {folder}")
 
-                self.speaker.speak(f"Opening folder")
+                self.speaker.speak("Opening folder")
 
                 self.explorer.open_folder(folder)
 
             return
 
-        # ======================================================
+        # ===============================================
+        # CAMERA
+        # ===============================================
+
+        elif intent == "OPEN_CAMERA":
+
+            self.update("Opening Camera")
+
+            self.speaker.speak("Opening Camera")
+
+            self.open_camera()
+
+            return
+
+        elif intent == "CLOSE_CAMERA":
+
+            self.update("Closing Camera")
+
+            self.speaker.speak("Closing Camera")
+
+            self.close_camera()
+
+            return
+
+        # ===============================================
         # BRIGHTNESS
-        # ======================================================
+        # ===============================================
 
         elif intent == "BRIGHTNESS":
 
@@ -158,48 +234,50 @@ class VoiceAssistant:
 
             elif action == "maximum":
 
-                self.update("Maximum Brightness")
-
                 self.system.set_brightness(100)
 
             elif action == "minimum":
 
-                self.update("Minimum Brightness")
-
                 self.system.set_brightness(0)
 
             return
+        # ===============================================
+        # VOLUME
+        # ===============================================
 
-        # ======================================================
-        # SCREENSHOT
-        # ======================================================
+        elif intent == "VOLUME":
 
-        elif intent == "SCREENSHOT":
+            action = data["action"]
 
-            self.update("Taking Screenshot")
+            if action == "increase":
 
-            self.speaker.speak("Taking Screenshot")
+                self.update("Increasing Volume")
 
-            self.system.screenshot()
+                self.speaker.speak("Increasing Volume")
+
+                self.system.increase_volume()
+
+            elif action == "decrease":
+
+                self.update("Decreasing Volume")
+
+                self.speaker.speak("Decreasing Volume")
+
+                self.system.decrease_volume()
+
+            elif action == "mute":
+
+                self.update("Muting Volume")
+
+                self.speaker.speak("Muting Volume")
+
+                self.system.mute()
 
             return
 
-        # ======================================================
-        # LOCK COMPUTER
-        # ======================================================
-
-        elif intent == "LOCK":
-
-            self.update("Locking Computer")
-
-            self.speaker.speak("Locking Computer")
-
-            self.system.lock()
-
-            return
-        # ======================================================
+        # ===============================================
         # KEYBOARD
-        # ======================================================
+        # ===============================================
 
         elif intent == "KEYBOARD":
 
@@ -209,15 +287,11 @@ class VoiceAssistant:
 
                 self.update("Copy")
 
-                self.speaker.speak("Copy")
-
                 self.keyboard.copy()
 
             elif action == "paste":
 
                 self.update("Paste")
-
-                self.speaker.speak("Paste")
 
                 self.keyboard.paste()
 
@@ -225,23 +299,23 @@ class VoiceAssistant:
 
                 self.update("Cut")
 
-                self.speaker.speak("Cut")
-
                 self.keyboard.cut()
 
             elif action == "undo":
 
                 self.update("Undo")
 
-                self.speaker.speak("Undo")
-
                 self.keyboard.undo()
+
+            elif action == "redo":
+
+                self.update("Redo")
+
+                self.keyboard.hotkey("ctrl", "y")
 
             elif action == "select_all":
 
                 self.update("Select All")
-
-                self.speaker.speak("Select All")
 
                 self.keyboard.select_all()
 
@@ -249,19 +323,17 @@ class VoiceAssistant:
 
                 key = data["target"]
 
-                if key:
+                self.update(f"Pressing {key}")
 
-                    self.update(f"Pressing {key}")
+                self.speaker.speak(f"Pressing {key}")
 
-                    self.speaker.speak(f"Pressing {key}")
-
-                    self.keyboard.press_key(key)
+                self.keyboard.press_key(key)
 
             return
 
-        # ======================================================
-        # TYPE TEXT
-        # ======================================================
+        # ===============================================
+        # TYPE
+        # ===============================================
 
         elif intent == "TYPE":
 
@@ -277,9 +349,9 @@ class VoiceAssistant:
 
             return
 
-        # ======================================================
+        # ===============================================
         # MOUSE
-        # ======================================================
+        # ===============================================
 
         elif intent == "MOUSE":
 
@@ -287,27 +359,57 @@ class VoiceAssistant:
 
             if action == "click":
 
-                self.update("Mouse Click")
-
                 self.mouse.click()
 
             elif action == "double":
-
-                self.update("Double Click")
 
                 self.mouse.double_click()
 
             elif action == "right":
 
-                self.update("Right Click")
-
                 self.mouse.right_click()
+
+            elif action == "scroll_up":
+
+                self.mouse.scroll_up()
+
+            elif action == "scroll_down":
+
+                self.mouse.scroll_down()
 
             return
 
-        # ======================================================
+        # ===============================================
+        # SCREENSHOT
+        # ===============================================
+
+        elif intent == "SCREENSHOT":
+
+            self.update("Taking Screenshot")
+
+            self.speaker.speak("Taking Screenshot")
+
+            self.system.screenshot()
+
+            return
+
+        # ===============================================
+        # LOCK SCREEN
+        # ===============================================
+
+        elif intent == "LOCK":
+
+            self.update("Locking Screen")
+
+            self.speaker.speak("Locking Screen")
+
+            self.system.lock()
+
+            return
+
+        # ===============================================
         # UNKNOWN
-        # ======================================================
+        # ===============================================
 
         else:
 
@@ -315,13 +417,11 @@ class VoiceAssistant:
 
             self.speaker.speak("Sorry, I did not understand.")
 
-    # ==========================================================
+    # ==================================================
     # START ASSISTANT
-    # ==========================================================
+    # ==================================================
 
     def start(self):
-
-        self.update("VoicePilot Started")
 
         self.speaker.speak("VoicePilot Started")
 
@@ -331,7 +431,7 @@ class VoiceAssistant:
 
             command = self.listener.listen()
 
-            if not command:
+            if command is None:
 
                 continue
 
@@ -345,22 +445,12 @@ class VoiceAssistant:
 
                 "exit",
                 "quit",
-                "stop",
-                "goodbye"
+                "stop assistant"
 
             ]:
-
-                self.update("Stopping VoicePilot")
 
                 self.speaker.speak("Goodbye")
 
                 break
 
             self.execute(command)
-
-
-if __name__ == "__main__":
-
-    assistant = VoiceAssistant()
-
-    assistant.start()
