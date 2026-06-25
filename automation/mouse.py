@@ -6,53 +6,42 @@ Mouse automation for VoicePilot.
 
 import pyautogui
 
-# Adjust these settings globally to handle modern Windows UI environments smoothly
-pyautogui.FAILSAFE = False  # Prevents crashing if mouse reaches corner boundaries
-pyautogui.PAUSE = 0.1       # Slight delay to ensure the OS registers clicks correctly
-
-
 class MouseController:
 
     def click(self):
         pyautogui.click()
-        print("Left Click")
+        print("Mouse Clicked")
 
     def double_click(self):
         pyautogui.doubleClick()
-        print("Double Click")
+        print("Mouse Double Clicked")
 
     def right_click(self):
         pyautogui.rightClick()
-        print("Right Click")
-
-    def move(self, x, y):
-        pyautogui.moveTo(x, y, duration=0.4)
-        print(f"Moved to ({x}, {y})")
+        print("Mouse Right Clicked")
 
     def scroll_up(self):
-        pyautogui.scroll(500)
+        # A positive integer scrolls UP on Windows platforms
+        pyautogui.scroll(1000)
         print("Scrolled Up")
 
     def scroll_down(self):
-        pyautogui.scroll(-500)
+        # A negative integer scrolls DOWN on Windows platforms
+        pyautogui.scroll(-1000)
         print("Scrolled Down")
-
-    def drag(self, x, y):
-        pyautogui.dragTo(x, y, duration=0.5)
 
 
 if __name__ == "__main__":
     mouse = MouseController()
 
     while True:
-        print("\n====== Mouse Test ======")
+        print("\n====== Mouse Menu ======")
         print("1. Click")
         print("2. Double Click")
         print("3. Right Click")
-        print("4. Move")
-        print("5. Scroll Up")
-        print("6. Scroll Down")
-        print("7. Exit")
+        print("4. Scroll Up")
+        print("5. Scroll Down")
+        print("6. Exit")
 
         choice = input("> ")
 
@@ -63,12 +52,8 @@ if __name__ == "__main__":
         elif choice == "3":
             mouse.right_click()
         elif choice == "4":
-            x = int(input("X : "))
-            y = int(input("Y : "))
-            mouse.move(x, y)
-        elif choice == "5":
             mouse.scroll_up()
-        elif choice == "6":
+        elif choice == "5":
             mouse.scroll_down()
-        elif choice == "7":
+        elif choice == "6":
             break

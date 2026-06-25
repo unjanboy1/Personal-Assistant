@@ -8,10 +8,10 @@ Detects the user's intent from a voice command.
 class IntentDetector:
 
     def detect(self, command: str):
+        # Clean speech artifacts and common punctuation
+        command = command.lower().strip().replace(".", "").replace(",", "")
 
-        command = command.lower().strip()
-
-        # Clean speech artifacts like "c u t" or spaces between letters
+        # Clean spaces between letters like "c u t"
         if "".join(command.split()) in ["cut", "copy", "paste", "undo", "redo"]:
             command = "".join(command.split())
 
@@ -19,15 +19,13 @@ class IntentDetector:
         # OPEN APPLICATION
         # ==========================================
         if command.startswith(("open ", "launch ", "start ")):
-            if "drive" not in command \
-            and "folder" not in command \
-            and "camera" not in command:
+            if "drive" not in command and "folder" not in command and "camera" not in command:
                 return "OPEN_APP"
 
         # ==========================================
         # CLOSE APPLICATION
         # ==========================================
-        if command.startswith(("close ", "exit ", "quit ")):
+        if "close" in command or "exit" in command or "quit" in command:
             if "camera" not in command:
                 return "CLOSE_APP"
 
@@ -38,129 +36,54 @@ class IntentDetector:
             return "SEARCH_WEB"
 
         # ==========================================
-        # DRIVE
+        # DRIVE / FOLDER / CAMERA
         # ==========================================
         if "drive" in command:
             return "OPEN_DRIVE"
-
-        # ==========================================
-        # FOLDER
-        # ==========================================
         if "folder" in command:
             return "OPEN_FOLDER"
-
-        # ==========================================
-        # CAMERA
-        # ==========================================
-        if "open camera" in command \
-        or "start camera" in command \
-        or "launch camera" in command:
+        if "open camera" in command or "start camera" in command or "launch camera" in command:
             return "OPEN_CAMERA"
-
         if "close camera" in command:
             return "CLOSE_CAMERA"
 
         # ==========================================
-        # BRIGHTNESS
+        # SYSTEM SETTINGS
         # ==========================================
         if "brightness" in command:
             return "BRIGHTNESS"
-
-        # ==========================================
-        # VOLUME
-        # ==========================================
         if "volume" in command:
             return "VOLUME"
-
-        # ==========================================
-        # SCREENSHOT
-        # ==========================================
         if "screenshot" in command:
             return "SCREENSHOT"
-
-        # ==========================================
-        # LOCK SCREEN
-        # ==========================================
-        if command in [
-            "lock screen",
-            "lock my screen",
-            "lock computer",
-            "lock pc"
-        ]:
+        if any(w in command for w in ["lock screen", "lock my screen", "lock computer", "lock pc"]):
             return "LOCK"
 
         # ==========================================
         # TYPE
         # ==========================================
-        if command.startswith("type ") \
-        or command.startswith("write "):
+        if command.startswith("type ") or command.startswith("write "):
             return "TYPE"
 
         # ==========================================
-        # MOUSE (Moved above Keyboard to prevent "left/right" overlap)
+        # MOUSE
         # ==========================================
-        mouse_commands = [
-            "click",
-            "double click",
-            "right click",
-            "left click",
-            "scroll up",
-            "scroll down"
-        ]
-
-        if command in mouse_commands or any(m in command for m in ["click", "scroll"]):
+        if any(m in command for m in ["click", "scroll"]):
             return "MOUSE"
 
         # ==========================================
-        # KEYBOARD COMMANDS
+        # KEYBOARD COMMANDS (Relaxed flexible checks)
         # ==========================================
-        keyboard_words = [
-            "copy",
-            "paste",
-            "cut",
-            "undo",
-            "redo",
-            "select all",
-            "select",  # Added fallback handling for truncated speech
-            "enter",
-            "tab",
-            "backspace",
-            "delete",
-            "space",
-            "escape",
-            "esc",
-            "home",
-            "end",
-            "page up",
-            "page down",
-            "up",
-            "down",
-            "left",
-            "right",
-            "caps lock",
-            "capslock",
-            "num lock",
-            "scroll lock",
-            "insert"
+        keyboard_shortcuts = ["copy", "paste", "cut", "undo", "redo", "select all", "select"]
+        if any(shortcut in command for shortcut in keyboard_shortcuts):
+            return "KEYBOARD"
+
+        keyboard_keys = [
+            "enter", "tab", "backspace", "delete", "space", "escape", "esc",
+            "home", "end", "page up", "page down", "up", "down", "left", "right",
+            "caps lock", "capslock", "num lock", "scroll lock", "insert"
         ]
-
-        if command.startswith("press "):
+        if command.startswith("press ") or any(key in command for key in keyboard_keys):
             return "KEYBOARD"
 
-        if command in keyboard_words:
-            return "KEYBOARD"
-
-        if any(command.startswith(word) for word in keyboard_words):
-            return "KEYBOARD"
-
-        # ==========================================
-        # UNKNOWN
-        # ==========================================
         return "UNKNOWN"
-
-
-if __name__ == "__main__":
-    detector = IntentDetector()
-    while True:
-        cmd = input("Command : ")
-        print(detector.detect(cmd))

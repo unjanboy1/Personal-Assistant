@@ -6,26 +6,19 @@ High-Speed Keyboard automation for VoicePilot.
 
 import pyautogui
 import time
-import pyperclip  # Built-in or easily installed via pip for instant typing
+import pyperclip
 
-# Keep this minimal so everything runs at full speed
-pyautogui.PAUSE = 0.01  
+pyautogui.PAUSE = 0.05  
 
 
 class KeyboardController:
 
     def type_text(self, text):
-        # Give a split second for the window to settle, but use clipboard for instant printing
         time.sleep(0.2)
-        
-        # Save old clipboard contents safely
         old_clipboard = pyperclip.paste()
-        
-        # Copy new text to clipboard and instantly drop it into the window via Ctrl+V
         pyperclip.copy(text)
         pyautogui.hotkey("ctrl", "v")
-        
-        # Restore old clipboard
+        time.sleep(0.1)  # Gives OS time to release clipboard handle safely
         pyperclip.copy(old_clipboard)
         print(f"Instantly Typed: {text}")
 
@@ -38,21 +31,22 @@ class KeyboardController:
         print(f"Hotkey: {' + '.join(keys)}")
 
     def copy(self):
+        time.sleep(0.1)
         pyautogui.hotkey("ctrl", "c")
+        print("Triggered System Copy")
 
     def paste(self):
+        time.sleep(0.1)
         pyautogui.hotkey("ctrl", "v")
+        print("Triggered System Paste")
 
     def cut(self):
+        time.sleep(0.1)
         pyautogui.hotkey("ctrl", "x")
+        print("Triggered System Cut")
 
     def undo(self):
         pyautogui.hotkey("ctrl", "z")
 
     def select_all(self):
         pyautogui.hotkey("ctrl", "a")
-
-
-if __name__ == "__main__":
-    keyboard = KeyboardController()
-    # ... (rest of your testing block stays identical)
