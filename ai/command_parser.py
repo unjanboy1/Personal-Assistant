@@ -14,7 +14,7 @@ class CommandParser:
 
     def parse(self, command: str):
 
-        command = command.lower().strip()
+        command = command.lower().strip().replace(".", "").replace(",", "")
 
         intent = self.detector.detect(command)
 
@@ -32,9 +32,8 @@ class CommandParser:
         if intent == "OPEN_APP":
             words = ["open", "launch", "start"]
             for word in words:
-                if command.startswith(word):
-                    app = command.replace(word, "", 1).strip()
-                    data["target"] = app
+                if word in command:
+                    data["target"] = command.split(word, 1)[1].strip()
                     break
 
         # ==================================================
@@ -43,9 +42,9 @@ class CommandParser:
         elif intent == "CLOSE_APP":
             words = ["close", "exit", "quit"]
             for word in words:
-                if command.startswith(word):
-                    app = command.replace(word, "", 1).strip()
-                    data["target"] = app
+                if word in command:
+                    target_app = command.split(word, 1)[1].strip()
+                    data["target"] = target_app if target_app else "active window"
                     break
 
         # ==================================================
@@ -58,65 +57,10 @@ class CommandParser:
             data["query"] = query.strip()
 
         # ==================================================
-        # OPEN DRIVE
-        # ==================================================
-        elif intent == "OPEN_DRIVE":
-            if "c" in command:
-                data["target"] = "C"
-            elif "d" in command:
-                data["target"] = "D"
-            elif "e" in command:
-                data["target"] = "E"
-            elif "f" in command:
-                data["target"] = "F"
-
-        # ==================================================
-        # OPEN FOLDER
-        # ==================================================
-        elif intent == "OPEN_FOLDER":
-            folder = command
-            folder = folder.replace("open", "")
-            folder = folder.replace("folder", "")
-            data["target"] = folder.strip()
-
-        # ==================================================
-        # CAMERA
-        # ==================================================
-        elif intent == "OPEN_CAMERA":
-            data["action"] = "open"
-        elif intent == "CLOSE_CAMERA":
-            data["action"] = "close"
-
-        # ==================================================
-        # BRIGHTNESS
-        # ==================================================
-        elif intent == "BRIGHTNESS":
-            if "increase" in command or "up" in command:
-                data["action"] = "increase"
-            elif "decrease" in command or "down" in command:
-                data["action"] = "decrease"
-            elif "maximum" in command or "max" in command:
-                data["action"] = "maximum"
-            elif "minimum" in command or "min" in command:
-                data["action"] = "minimum"
-
-        # ==================================================
-        # VOLUME
-        # ==================================================
-        elif intent == "VOLUME":
-            if "increase" in command or "up" in command:
-                data["action"] = "increase"
-            elif "decrease" in command or "down" in command:
-                data["action"] = "decrease"
-            elif "mute" in command:
-                data["action"] = "mute"
-            elif "unmute" in command:
-                data["action"] = "unmute"
-
-        # ==================================================
         # KEYBOARD
         # ==================================================
         elif intent == "KEYBOARD":
+            # 1. Define the key_map dictionary clearly so it can be read safely
             key_map = {
                 "enter": "enter",
                 "return": "enter",
@@ -137,25 +81,30 @@ class CommandParser:
                 "caps lock": "capslock",
                 "capslock": "capslock",
                 "num lock": "numlock",
-                "numlock": "numlock",
                 "scroll lock": "scrolllock",
-                "scrolllock": "scrolllock",
                 "insert": "insert"
             }
 
-            if "copy" in command:
+            # 2. Match macro actions
+            if "copy" in command or "copy text" in command:
                 data["action"] = "copy"
-            elif "paste" in command:
+
+            elif "paste" in command or "paste text" in command:
                 data["action"] = "paste"
-            elif "cut" in command:
+
+            elif "cut" in command or "cut text" in command:
                 data["action"] = "cut"
-            elif "undo" in command:
+
+            elif "undo" in command or "undo text" in command:
                 data["action"] = "undo"
-            elif "redo" in command:
+
+            elif "redo" in command or "redo text" in command:
                 data["action"] = "redo"
-            # FIX: Matches both "select all" and a standalone registered "select"
-            elif "select all" in command or command.strip() == "select":
+
+            elif "select all" in command or "select" in command or "select text" in command:
                 data["action"] = "select_all"
+
+            # 3. Fallback to basic button presses
             else:
                 key = command
                 if key.startswith("press "):
