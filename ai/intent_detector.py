@@ -1,79 +1,90 @@
 """
 intent_detector.py
 
-Detects the user's intent from a voice command.
+Smart intent detector for VoicePilot.
 """
-
-from typing import Optional
 
 
 class IntentDetector:
 
-    def __init__(self):
-        self.intent_keywords = {
-            "OPEN_APP": [
-                "open",
-                "launch",
-                "start",
-                "run"
-            ],
+    def detect(self, command: str):
 
-            "CLOSE_APP": [
-                "close",
-                "exit",
-                "quit",
-                "terminate"
-            ],
+        command = command.lower().strip()
 
-            "SEARCH_WEB": [
-                "search",
-                "google",
-                "find",
-                "look up"
-            ],
+        # -------------------------
+        # Applications
+        # -------------------------
 
-            "OPEN_FOLDER": [
-                "folder",
-                "directory",
-                "drive"
-            ],
+        if command.startswith(("open ", "launch ", "start ")):
 
-            "SYSTEM_CONTROL": [
-                "volume",
-                "brightness",
-                "shutdown",
-                "restart",
-                "lock",
-                "sleep",
-                "screenshot"
-            ],
+            return "OPEN_APP"
 
-            "KEYBOARD": [
-                "type",
-                "press",
-                "copy",
-                "paste",
-                "delete"
-            ],
+        # -------------------------
+        # Browser
+        # -------------------------
 
-            "MOUSE": [
-                "click",
-                "double click",
-                "right click",
-                "scroll",
-                "move cursor"
-            ]
-        }
+        if "search" in command or "google" in command:
 
-    def detect_intent(self, command: str) -> Optional[str]:
+            return "SEARCH_WEB"
 
-        command = command.lower()
+        # -------------------------
+        # Explorer
+        # -------------------------
 
-        for intent, keywords in self.intent_keywords.items():
+        if "drive" in command:
 
-            for keyword in keywords:
+            return "OPEN_DRIVE"
 
-                if keyword in command:
-                    return intent
+        if "folder" in command:
+
+            return "OPEN_FOLDER"
+
+        # -------------------------
+        # Brightness
+        # -------------------------
+
+        if "brightness" in command:
+
+            return "BRIGHTNESS"
+
+        # -------------------------
+        # Volume
+        # -------------------------
+
+        if "volume" in command:
+
+            return "VOLUME"
+
+        # -------------------------
+        # Screenshot
+        # -------------------------
+
+        if "screenshot" in command:
+
+            return "SCREENSHOT"
+
+        # -------------------------
+        # Lock
+        # -------------------------
+
+        if "lock" in command:
+
+            return "LOCK"
+
+        # -------------------------
+        # Mouse
+        # -------------------------
+
+        if "click" in command:
+
+            return "MOUSE"
+
+        # -------------------------
+        # Keyboard
+        # -------------------------
+
+        if command.startswith("type"):
+
+            return "TYPE"
 
         return "UNKNOWN"
