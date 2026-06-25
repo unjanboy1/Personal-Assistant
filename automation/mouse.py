@@ -4,6 +4,7 @@ mouse.py
 Mouse automation for VoicePilot.
 """
 
+
 import pyautogui
 
 
@@ -22,6 +23,7 @@ class MouseController:
         print("Double Click")
 
     def right_click(self):
+
 
         pyautogui.rightClick()
 
@@ -45,7 +47,6 @@ class MouseController:
 
         pyautogui.dragTo(x, y, duration=0.5)
 
-
 if __name__ == "__main__":
 
     mouse = MouseController()
@@ -62,6 +63,7 @@ if __name__ == "__main__":
         print("7. Exit")
 
         choice = input("> ")
+
 
         if choice == "1":
 
