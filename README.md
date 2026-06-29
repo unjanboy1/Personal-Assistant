@@ -38,6 +38,11 @@ Example Commands:
 - Navigate through Windows directories
 
 
+Example Commands:
+- Open D Drive
+- Open Downloads Folder
+- Open Documents
+- Open This PC
 
 ---
 
