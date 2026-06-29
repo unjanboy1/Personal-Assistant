@@ -200,3 +200,130 @@ The following features are planned for future versions:
 - Subprocess
 
 ---
+
+# Project Structure
+
+```
+VoicePilot/
+│
+├── app.py
+├── assistant.py
+├── README.md
+├── requirements.txt
+│
+├── speech/
+│   ├── speech_to_text.py
+│   ├── text_to_speech.py
+│
+├── ai/
+│   ├── intent_detector.py
+│   └── command_parser.py
+│
+├── automation/
+│   ├── apps.py
+│   ├── browser.py
+│   ├── explorer.py
+│   ├── keyboard.py
+│   ├── mouse.py
+│   └── system.py
+│
+├── ui/
+│   ├── main_window.py
+│   └── widgets.py
+│
+├── utils/
+│   ├── config.py
+│   └── helpers.py
+│
+└── assets/
+```
+
+---
+
+# Installation
+
+Clone the repository
+
+```bash
+git clone <repository-url>
+```
+
+Move into the project
+
+```bash
+cd VoicePilot
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the project
+
+```bash
+python app.py
+```
+
+---
+
+# Example Voice Commands
+
+### Applications
+
+- Open Chrome
+- Open Notepad
+- Open VS Code
+- Close Chrome
+
+### Browser
+
+- Search Python Programming
+- Search Machine Learning
+- Open YouTube
+
+### Keyboard
+
+- Copy
+- Paste
+- Undo
+- Select All
+- Press Enter
+- Press Backspace
+- Press Caps Lock
+
+### Mouse
+
+- Click
+- Right Click
+- Double Click
+- Scroll Down
+
+### System
+
+- Increase Brightness
+- Decrease Brightness
+- Increase Volume
+- Take Screenshot
+- Open Camera
+- Lock Screen
+
+---
+
+# Future Goal
+
+The long-term goal of VoicePilot is to become an intelligent desktop assistant capable of understanding natural language and performing complex desktop tasks. Future versions aim to support opening any installed application, locating files and folders by name, conversational AI, smart automation workflows, and seamless integration with modern AI services, providing a hands-free productivity experience.
+
+---
+
+## Contributors
+
+- **Maryam Amir**
+- **Zaib**
+
+---
+
+## License
+
+This project is developed for educational and academic purposes.
