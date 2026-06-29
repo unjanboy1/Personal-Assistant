@@ -22,7 +22,84 @@ The assistant can launch applications, search the web, control system settings, 
 - Launch Windows built-in programs
 - Open installed software
 
+Example Commands:
+- Open Chrome
+- Open Notepad
+- Open Calculator
+- Close Chrome
+- Close Notepad
 
+---
+
+## 📁 File & Folder Management
+- Open folders
+- Open drives
+- Open File Explorer
+- Navigate through Windows directories
+
+
+Example Commands:
+- Open D Drive
+- Open Downloads Folder
+- Open Documents
+- Open This PC
+
+---
+
+## 🌐 Browser Automation
+- Open websites
+- Search Google
+- Launch browser automatically
+
+Example Commands:
+- Search Python tutorials
+- Search AI Projects
+- Open YouTube
+- Open GitHub
+
+---
+
+## ⌨ Keyboard Automation
+Supports keyboard shortcuts and key presses.
+
+Commands include:
+
+- Copy
+- Paste
+- Cut
+- Undo
+- Redo
+- Select All
+- Press Enter
+- Press Tab
+- Press Escape
+- Press Backspace
+- Press Delete
+- Press Space
+- Press Home
+- Press End
+- Press Page Up
+- Press Page Down
+- Press Caps Lock
+- Press Num Lock
+- Press Scroll Lock
+
+Typing Commands:
+
+- Type Hello World
+- Type My Name is Maryam
+
+---
+
+## 🖱 Mouse Automation
+
+Supports:
+
+- Left Click
+- Right Click
+- Double Click
+- Scroll Up
+- Scroll Down
 
 ---
 
