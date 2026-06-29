@@ -1,9 +1,9 @@
+
 # 🎙️ VoicePilot – AI Desktop Voice Assistant
 
 VoicePilot is a Python-based desktop voice assistant that enables users to control their Windows computer using natural voice commands. It combines speech recognition, text-to-speech, and desktop automation to perform everyday tasks hands-free.
 
 The assistant can launch applications, search the web, control system settings, automate keyboard and mouse actions, and interact with Windows through simple voice commands.
-
 ---
 
 # Features
@@ -199,4 +199,52 @@ The following features are planned for future versions:
 - Webbrowser
 - Subprocess
 
+# Example Voice Commands
+
+### Applications
+
+- Open Chrome
+- Open Notepad
+- Open VS Code
+- Close Chrome
+
+### Browser
+
+- Search Python Programming
+- Search Machine Learning
+- Open YouTube
+
+### Keyboard
+
+- Copy
+- Paste
+- Undo
+- Select All
+- Press Enter
+- Press Backspace
+- Press Caps Lock
+
+### Mouse
+
+- Click
+- Right Click
+- Double Click
+- Scroll Down
+
+### System
+
+- Increase Brightness
+- Decrease Brightness
+- Increase Volume
+- Take Screenshot
+- Open Camera
+- Lock Screen
+
 ---
+# Future Goal
+
+The long-term goal of VoicePilot is to become an intelligent desktop assistant capable of understanding natural language and performing complex desktop tasks. Future versions aim to support opening any installed application, locating files and folders by name, conversational AI, smart automation workflows, and seamless integration with modern AI services, providing a hands-free productivity experience.
+
+
+
+
