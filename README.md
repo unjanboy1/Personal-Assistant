@@ -103,6 +103,128 @@ Supports:
 
 ---
 
+## 💡 Brightness Control
+
+Control screen brightness through voice.
+
+Commands:
+
+- Increase Brightness
+- Decrease Brightness
+- Maximum Brightness
+- Minimum Brightness
+
+---
+
+## 🔊 Volume Control
+
+Supports:
+
+- Increase Volume
+- Decrease Volume
+- Mute Volume
+- Unmute Volume
+
+---
+
+## 📸 Screenshot
+
+Take screenshots instantly.
+
+Command:
+
+- Take Screenshot
+
+---
+
+## 📷 Camera Control
+
+Supports opening and closing the Windows Camera.
+
+Commands:
+
+- Open Camera
+- Close Camera
+
+---
+
+## 🔒 System Controls
+
+Supports:
+
+- Lock Screen
+- Restart Computer
+- Shutdown Computer
+- Sleep Computer
+
+---
+
+# Upcoming Features
+
+The following features are planned for future versions:
+
+- Smart application finder
+- Open any installed software automatically
+- Open any file by voice
+- Open any folder by name
+- AI conversation mode
+- Weather information
+- Time and date queries
+- Calculator
+- Music player controls
+- Email automation
+- WhatsApp automation
+- OCR (Text extraction from images)
+- Face recognition login
+- Voice authentication
+- Multiple language support
+- ChatGPT integration
+- Offline AI mode
+- Smart reminders
+- Alarm system
+- Calendar integration
+
+---
+
+# Technologies Used
+
+- Python
+- SpeechRecognition
+- Pyttsx3
+- PyAutoGUI
+- OpenCV
+- Psutil
+- Screen Brightness Control
+- Tkinter
+- Webbrowser
+- Subprocess
+
+# Example Voice Commands
+
+### Applications
+
+- Open Chrome
+- Open Notepad
+- Open VS Code
+- Close Chrome
+
+### Browser
+
+- Search Python Programming
+- Search Machine Learning
+- Open YouTube
+
+### Keyboard
+
+- Copy
+- Paste
+- Undo
+- Select All
+- Press Enter
+- Press Backspace
+- Press Caps Lock
+
+### Mouse
 
 - Click
 - Right Click
