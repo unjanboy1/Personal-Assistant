@@ -240,7 +240,10 @@ The following features are planned for future versions:
 - Open Camera
 - Lock Screen
 
+---
+# Future Goal
 
+The long-term goal of VoicePilot is to become an intelligent desktop assistant capable of understanding natural language and performing complex desktop tasks. Future versions aim to support opening any installed application, locating files and folders by name, conversational AI, smart automation workflows, and seamless integration with modern AI services, providing a hands-free productivity experience.
 
 
 
