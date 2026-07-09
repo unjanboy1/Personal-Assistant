@@ -1,96 +1,262 @@
-# 🎙️ VoicePilot
 
-VoicePilot is a Python-based desktop voice assistant designed to control Windows environments using natural language processing. By combining robust speech recognition, text-to-speech synthesis, and OS-level automation, VoicePilot delivers a hands-free desktop experience. 
+# 🎙️ VoicePilot – AI Desktop Voice Assistant
 
-Whether you need to launch applications, manipulate files, automate browser workflows, or control system hardware, VoicePilot executes your verbal commands in real time.
+VoicePilot is a Python-based desktop voice assistant that enables users to control their Windows computer using natural voice commands. It combines speech recognition, text-to-speech, and desktop automation to perform everyday tasks hands-free.
+
+The assistant can launch applications, search the web, control system settings, automate keyboard and mouse actions, and interact with Windows through simple voice commands.
+---
+
+# Features
+
+## 🎤 Voice Recognition
+- Real-time voice command recognition
+- Speech-to-text conversion
+- Text-to-speech responses
+- Continuous listening mode
 
 ---
 
-## 🚀 Key Features
+## 💻 Application Control
+- Open desktop applications
+- Close running applications
+- Launch Windows built-in programs
+- Open installed software
 
-* **Continuous Voice Recognition:** Real-time speech-to-text processing and text-to-speech confirmation.
-* **Application & File Management:** Hands-free execution, termination, and directory navigation.
-* **Peripherals Automation:** Full mouse navigation and keystroke macros via voice injection.
-* **Hardware Control:** Granular adjustment of system audio, display brightness, and power states.
-
----
-
-## 🛠️ Tech Stack & Dependencies
-
-VoicePilot leverages a modular Python architecture utilizing the following core libraries:
-
-* **Audio Pipeline:** `SpeechRecognition` (STT), `pyttsx3` (TTS)
-* **OS Automation:** `pyautogui` (Input simulation), `subprocess`, `psutil` (Process management)
-* **Hardware Interfacing:** `screen-brightness-control`
-* **Computer Vision:** `opencv-python` (Camera & vision tasks)
-* **GUI Engine:** `tkinter`
-* **Networking:** `webbrowser`
+Example Commands:
+- Open Chrome
+- Open Notepad
+- Open Calculator
+- Close Chrome
+- Close Notepad
 
 ---
 
-## 📋 Supported Voice Commands
+## 📁 File & Folder Management
+- Open folders
+- Open drives
+- Open File Explorer
+- Navigate through Windows directories
 
-### 💻 System & Application Control
-| Target | Sample Commands |
-| :--- | :--- |
-| **Applications** | `"Open Chrome"`, `"Open Notepad"`, `"Open Calculator"`, `"Close Chrome"` |
-| **File System** | `"Open D Drive"`, `"Open Downloads Folder"`, `"Open Documents"`, `"Open This PC"` |
-| **System States** | `"Lock Screen"`, `"Restart Computer"`, `"Shutdown Computer"`, `"Sleep Computer"` |
-| **Hardware Perks**| `"Take Screenshot"`, `"Open Camera"`, `"Close Camera"` |
 
-### 🌐 Web & Browser Automation
-| Objective | Command Syntax |
-| :--- | :--- |
-| **Web Navigation** | `"Open YouTube"`, `"Open GitHub"` |
-| **Search Queries** | `"Search Python tutorials"`, `"Search AI Projects"` |
-
-### ⌨️ Input Automation (Mouse & Keyboard)
-| Category | Supported Actions / Syntax |
-| :--- | :--- |
-| **Keyboard Modifiers** | `"Copy"`, `"Paste"`, `"Cut"`, `"Undo"`, `"Redo"`, `"Select All"` |
-| **Standard Keys** | `"Press Enter"`, `"Press Tab"`, `"Press Escape"`, `"Press Backspace"`, `"Press Delete"` |
-| **Navigation Keys** | `"Press Home"`, `"Press End"`, `"Press Page Up"`, `"Press Page Down"` |
-| **Toggles** | `"Press Caps Lock"`, `"Press Num Lock"`, `"Press Scroll Lock"` |
-| **Text Injection** | `"Type [Your Text Here]"` *(e.g., "Type Hello World")* |
-| **Mouse Operations** | `"Left Click"`, `"Right Click"`, `"Double Click"`, `"Scroll Up"`, `"Scroll Down"` |
-
-### 🎛️ Hardware Toggles
-| Hardware | Commands |
-| :--- | :--- |
-| **Display Brightness** | `"Increase Brightness"`, `"Decrease Brightness"`, `"Maximum Brightness"`, `"Minimum Brightness"` |
-| **System Audio** | `"Increase Volume"`, `"Decrease Volume"`, `"Mute Volume"`, `"Unmute Volume"` |
+Example Commands:
+- Open D Drive
+- Open Downloads Folder
+- Open Documents
+- Open This PC
 
 ---
 
-## 🛣️ Roadmap & Future Goals
+## 🌐 Browser Automation
+- Open websites
+- Search Google
+- Launch browser automatically
 
-The long-term objective of VoicePilot is to evolve from a command-matching engine into an intelligent, context-aware digital workplace assistant. Planned features include:
-
-### 🧠 Intelligent Automation & AI
-* Deep LLM/ChatGPT integration for conversational context.
-* Offline AI execution mode for enhanced privacy.
-* Smart application finder to dynamically locate non-pathed software binaries.
-* OCR engine for image-to-text workflows.
-
-### 🛡️ Security & Authentication
-* Biometric security via face recognition login.
-* Voice print authentication to restrict system access.
-
-### 📅 Productivity Suite
-* Natural language calendar, alarm, and reminder configuration.
-* Automated messaging integrations (WhatsApp, Email clients).
-* Live localized weather, date, and math computation parsing.
-* Multi-language spoken dialect profiles.
+Example Commands:
+- Search Python tutorials
+- Search AI Projects
+- Open YouTube
+- Open GitHub
 
 ---
 
-## 👥 Contributors
+## ⌨ Keyboard Automation
+Supports keyboard shortcuts and key presses.
 
-* **Maryam Amir**
-* **Zaib**
+Commands include:
+
+- Copy
+- Paste
+- Cut
+- Undo
+- Redo
+- Select All
+- Press Enter
+- Press Tab
+- Press Escape
+- Press Backspace
+- Press Delete
+- Press Space
+- Press Home
+- Press End
+- Press Page Up
+- Press Page Down
+- Press Caps Lock
+- Press Num Lock
+- Press Scroll Lock
+
+Typing Commands:
+
+- Type Hello World
+- Type My Name is Maryam
 
 ---
 
-## 📄 License
+## 🖱 Mouse Automation
 
-This project is developed exclusively for educational and academic purposes.
+Supports:
+
+- Left Click
+- Right Click
+- Double Click
+- Scroll Up
+- Scroll Down
+
+---
+
+## 💡 Brightness Control
+
+Control screen brightness through voice.
+
+Commands:
+
+- Increase Brightness
+- Decrease Brightness
+- Maximum Brightness
+- Minimum Brightness
+
+---
+
+## 🔊 Volume Control
+
+Supports:
+
+- Increase Volume
+- Decrease Volume
+- Mute Volume
+- Unmute Volume
+
+---
+
+## 📸 Screenshot
+
+Take screenshots instantly.
+
+Command:
+
+- Take Screenshot
+
+---
+
+## 📷 Camera Control
+
+Supports opening and closing the Windows Camera.
+
+Commands:
+
+- Open Camera
+- Close Camera
+
+---
+
+## 🔒 System Controls
+
+Supports:
+
+- Lock Screen
+- Restart Computer
+- Shutdown Computer
+- Sleep Computer
+
+---
+
+# Upcoming Features
+
+The following features are planned for future versions:
+
+- Smart application finder
+- Open any installed software automatically
+- Open any file by voice
+- Open any folder by name
+- AI conversation mode
+- Weather information
+- Time and date queries
+- Calculator
+- Music player controls
+- Email automation
+- WhatsApp automation
+- OCR (Text extraction from images)
+- Face recognition login
+- Voice authentication
+- Multiple language support
+- ChatGPT integration
+- Offline AI mode
+- Smart reminders
+- Alarm system
+- Calendar integration
+
+---
+
+# Technologies Used
+
+- Python
+- SpeechRecognition
+- Pyttsx3
+- PyAutoGUI
+- OpenCV
+- Psutil
+- Screen Brightness Control
+- Tkinter
+- Webbrowser
+- Subprocess
+
+# Example Voice Commands
+
+### Applications
+
+- Open Chrome
+- Open Notepad
+- Open VS Code
+- Close Chrome
+
+### Browser
+
+- Search Python Programming
+- Search Machine Learning
+- Open YouTube
+
+### Keyboard
+
+- Copy
+- Paste
+- Undo
+- Select All
+- Press Enter
+- Press Backspace
+- Press Caps Lock
+
+### Mouse
+
+- Click
+- Right Click
+- Double Click
+- Scroll Down
+
+### System
+
+- Increase Brightness
+- Decrease Brightness
+- Increase Volume
+- Take Screenshot
+- Open Camera
+- Lock Screen
+
+---
+# Future Goal
+
+The long-term goal of VoicePilot is to become an intelligent desktop assistant capable of understanding natural language and performing complex desktop tasks. Future versions aim to support opening any installed application, locating files and folders by name, conversational AI, smart automation workflows, and seamless integration with modern AI services, providing a hands-free productivity experience.
+
+---
+
+## Contributors
+
+- **Maryam Amir**
+- **Zaib**
+
+---
+
+## License
+
+This project is developed for educational and academic purposes.
+
+
+
