@@ -93,4 +93,5 @@ The long-term objective of VoicePilot is to evolve from a command-matching engin
 
 ## 📄 License
 
+
 This project is developed exclusively for educational and academic purposes.
