@@ -78,10 +78,5 @@ The long-term objective of VoicePilot is to evolve from a command-matching engin
 * Biometric security via face recognition login.
 * Voice print authentication to restrict system access.
 
-### 📅 Productivity Suite
-* Natural language calendar, alarm, and reminder configuration.
-* Automated messaging integrations (WhatsApp, Email clients).
-* Live localized weather, date, and math computation parsing.
-* Multi-language spoken dialect profiles.
 
 
