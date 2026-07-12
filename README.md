@@ -1,12 +1,8 @@
-
-
 # 🎙️ VoicePilot
 
 VoicePilot is a Python-based desktop voice assistant designed to control Windows environments using natural language processing. By combining robust speech recognition, text-to-speech synthesis, and OS-level automation, VoicePilot delivers a hands-free desktop experience. 
 
 Whether you need to launch applications, manipulate files, automate browser workflows, or control system hardware, VoicePilot executes your verbal commands in real time.
-
----
 
 ## 🚀 Key Features
 
@@ -14,8 +10,6 @@ Whether you need to launch applications, manipulate files, automate browser work
 * **Application & File Management:** Hands-free execution, termination, and directory navigation.
 * **Peripherals Automation:** Full mouse navigation and keystroke macros via voice injection.
 * **Hardware Control:** Granular adjustment of system audio, display brightness, and power states.
-
----
 
 ## 🛠️ Tech Stack & Dependencies
 
@@ -27,8 +21,6 @@ VoicePilot leverages a modular Python architecture utilizing the following core 
 * **Computer Vision:** `opencv-python` (Camera & vision tasks)
 * **GUI Engine:** `tkinter`
 * **Networking:** `webbrowser`
-
----
 
 ## 📋 Supported Voice Commands
 
@@ -62,7 +54,6 @@ VoicePilot leverages a modular Python architecture utilizing the following core 
 | **Display Brightness** | `"Increase Brightness"`, `"Decrease Brightness"`, `"Maximum Brightness"`, `"Minimum Brightness"` |
 | **System Audio** | `"Increase Volume"`, `"Decrease Volume"`, `"Mute Volume"`, `"Unmute Volume"` |
 
----
 
 ## 🛣️ Roadmap & Future Goals
 
@@ -74,9 +65,6 @@ The long-term objective of VoicePilot is to evolve from a command-matching engin
 * Smart application finder to dynamically locate non-pathed software binaries.
 * OCR engine for image-to-text workflows.
 
-### 🛡️ Security & Authentication
-* Biometric security via face recognition login.
-* Voice print authentication to restrict system access.
 
 
 
