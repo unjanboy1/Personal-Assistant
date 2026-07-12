@@ -84,16 +84,4 @@ The long-term objective of VoicePilot is to evolve from a command-matching engin
 * Live localized weather, date, and math computation parsing.
 * Multi-language spoken dialect profiles.
 
----
 
-## 👥 Contributors
-
-* **Maryam Amir**
-* **Zaib**
-
----
-
-## 📄 License
-
-
-This project is developed exclusively for educational and academic purposes.
