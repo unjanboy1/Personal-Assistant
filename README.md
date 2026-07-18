@@ -1,33 +1,33 @@
-# VoicePilot: AI-Powered Desktop Voice Assistant
+# 🎙️ VoicePilot: AI-Powered Desktop Voice Assistant
 
 VoicePilot is an advanced, Python-based desktop voice assistant engineered to enable seamless, hands-free control of the Windows operating system. By integrating real-time speech recognition, natural text-to-speech feedback, and robust GUI automation, VoicePilot translates natural language commands into instantaneous system actions.
 
 ---
 
-## Key Features
+## 🚀 Key Features
 
-### Intelligent Speech Engine
+### 🎤 Intelligent Speech Engine
 * **Real-Time Recognition:** Low-latency processing of voice inputs.
 * **Bi-directional Feedback:** Clear, customizable text-to-speech verbal confirmations.
 * **Continuous Listening:** Background execution waiting for your prompt.
 
-### System & Application Control
+### 💻 System & Application Control
 * **Process Management:** Launch and terminate standard Windows applications or third-party software (e.g., Chrome, VS Code, Notepad).
 * **Power & Security:** Voice-triggered commands to lock, sleep, restart, or safely shut down the system.
 * **Hardware Integration:** Direct toggle control for the Windows Camera and instant screenshot capturing.
 
-### File & Directory Navigation
+### 📂 File & Directory Navigation
 * Native integration with Windows File Explorer.
 * Direct vocal navigation to key system directories (e.g., Documents, Downloads, local drives).
 
-### Hands-Free Hardware Automation
+### ⌨️ Hands-Free Hardware Automation
 * **Keyboard Emulation:** Full support for system shortcuts, functional keypresses, and direct text dictation.
 * **Mouse Emulation:** Trigger precise left, right, double clicks, and vertical scrolling on demand.
 * **Peripherals Control:** Dynamic adjustment of screen brightness levels and system volume states.
 
 ---
 
-## Tech Stack & Dependencies
+## 🛠️ Tech Stack & Dependencies
 
 VoicePilot leverages a robust suite of Python libraries to bridge speech processing with OS-level execution:
 
@@ -40,7 +40,7 @@ VoicePilot leverages a robust suite of Python libraries to bridge speech process
 
 ---
 
-## Command Reference
+## 💬 Command Reference
 
 | Category | Voice Command Examples | Action Performed |
 | :--- | :--- | :--- |
@@ -55,14 +55,14 @@ VoicePilot leverages a robust suite of Python libraries to bridge speech process
 
 ---
 
-## Installation & Requirements
+## ⚙️ Installation & Requirements
 
 ### Prerequisites
 * Windows OS
 * Python 3.8 or higher
 
-### Setup Instructions
-1. Clone the repository to your local machine:
+### Setup Instruction
+1. Clone the repository to your local machine.
+2. Install the required dependencies using pip:
    ```bash
-   git clone [https://github.com/marriez1525-commits/VoicePilot.git](https://github.com/marriez1525-commits/VoicePilot.git)
-   cd VoicePilot
+   pip install SpeechRecognition pyttsx3 pyautogui psutil screen-brightness-control opencv-python
