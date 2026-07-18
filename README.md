@@ -1,6 +1,6 @@
 # 🎙️ VoicePilot: AI-Powered Desktop Voice Assistant
 
-VoicePilot is an advanced, Python-based desktop voice assistant engineered to enable seamless, hands-free control of the Windows operating system. By integrating real-time speech recognition, natural text-to-speech feedback, and robust GUI automation, VoicePilot translates natural language commands into instantaneous system actions.
+**VoicePilot** is an advanced, Python-based desktop voice assistant engineered to enable seamless, hands-free control of Windows operating systems. By integrating real-time speech recognition, natural text-to-speech feedback, and robust GUI automation, VoicePilot translates natural language commands into instantaneous system actions. 
 
 ---
 
@@ -55,14 +55,33 @@ VoicePilot leverages a robust suite of Python libraries to bridge speech process
 
 ---
 
-## ⚙️ Installation & Requirements
+## 🗺️ Roadmap & Future Vision
 
-### Prerequisites
-* Windows OS
-* Python 3.8 or higher
+Our long-term objective is to transition VoicePilot from a utility assistant into a fully contextual, intelligent desktop companion. 
 
-### Setup Instruction
-1. Clone the repository to your local machine.
-2. Install the required dependencies using pip:
-   ```bash
-   pip install SpeechRecognition pyttsx3 pyautogui psutil screen-brightness-control opencv-python
+### Phase 1: Enhanced Automation & Utilities
+* [ ] **Smart Application Finder:** Automatically scan and launch any installed software without hardcoded paths.
+* [ ] **Advanced File Indexing:** Locate and open specific files/folders instantly by name.
+* [ ] **Personal Productivity:** Voice-automated emails, WhatsApp messaging, and calendar integrations.
+* [ ] **Media & Time:** Smart alarms, dynamic timers, and unified media player controls.
+
+### Phase 2: AI & Security Integration
+* [ ] **Large Language Model (LLM) Integration:** Support for ChatGPT/local offline AI models for conversational depth.
+* [ ] **Computer Vision Capabilities:** OCR engine for on-screen text extraction and face recognition login.
+* [ ] **Biometric Voice Verification:** Secure execution of administrative commands via voiceprint matching.
+* [ ] **Localization:** Multilingual speech-to-text processing.
+
+---
+
+## 👥 Contributors
+
+We appreciate the dedication and efforts of our development team:
+
+* **Maryam Amir**
+* **Zaib**
+
+---
+
+## 📄 License & Academic Note
+
+This project is developed primarily for academic, educational, and research purposes. All rights reserved to the original authors.
