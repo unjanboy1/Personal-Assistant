@@ -1,5 +1,9 @@
 # 🎙️ VoicePilot: AI-Powered Desktop Voice Assistant
 
+[![Python Version](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-Academic_/_Educational-green.svg)](https://opensource.org/licenses/)
+[![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey.svg)](https://www.microsoft.com/windows)
+
 **VoicePilot** is an advanced, Python-based desktop voice assistant engineered to enable seamless, hands-free control of Windows operating systems. By integrating real-time speech recognition, natural text-to-speech feedback, and robust GUI automation, VoicePilot translates natural language commands into instantaneous system actions. 
 
 ---
@@ -31,12 +35,12 @@
 
 VoicePilot leverages a robust suite of Python libraries to bridge speech processing with OS-level execution:
 
-* **Core Engine:** Python
-* **Speech Processing:** SpeechRecognition (Audio parsing), pyttsx3 (Offline Text-to-Speech)
-* **OS & Process Automation:** PyAutoGUI (Input emulation), psutil (Process tracking), subprocess (System calls)
-* **Computer Vision:** OpenCV (Camera feed handling)
-* **Hardware Utilities:** screen-brightness-control (Display manipulation)
-* **GUI & Web:** Tkinter (Interface design), webbrowser (Web automation)
+* **Core Engine:** `Python`
+* **Speech Processing:** `SpeechRecognition` (Audio parsing), `pyttsx3` (Offline Text-to-Speech)
+* **OS & Process Automation:** `PyAutoGUI` (Input emulation), `psutil` (Process tracking), `subprocess` (System calls)
+* **Computer Vision:** `OpenCV` (Camera feed handling)
+* **Hardware Utilities:** `screen-brightness-control` (Display manipulation)
+* **GUI & Web:** `Tkinter` (Interface design), `webbrowser` (Web automation)
 
 ---
 
