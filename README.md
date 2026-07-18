@@ -1,262 +1,68 @@
+# VoicePilot: AI-Powered Desktop Voice Assistant
 
-# 🎙️ VoicePilot – AI Desktop Voice Assistant
-
-VoicePilot is a Python-based desktop voice assistant that enables users to control their Windows computer using natural voice commands. It combines speech recognition, text-to-speech, and desktop automation to perform everyday tasks hands-free.
-
-The assistant can launch applications, search the web, control system settings, automate keyboard and mouse actions, and interact with Windows through simple voice commands.
----
-
-# Features
-
-## 🎤 Voice Recognition
-- Real-time voice command recognition
-- Speech-to-text conversion
-- Text-to-speech responses
-- Continuous listening mode
+VoicePilot is an advanced, Python-based desktop voice assistant engineered to enable seamless, hands-free control of the Windows operating system. By integrating real-time speech recognition, natural text-to-speech feedback, and robust GUI automation, VoicePilot translates natural language commands into instantaneous system actions.
 
 ---
 
-## 💻 Application Control
-- Open desktop applications
-- Close running applications
-- Launch Windows built-in programs
-- Open installed software
+## Key Features
 
-Example Commands:
-- Open Chrome
-- Open Notepad
-- Open Calculator
-- Close Chrome
-- Close Notepad
+### Intelligent Speech Engine
+* **Real-Time Recognition:** Low-latency processing of voice inputs.
+* **Bi-directional Feedback:** Clear, customizable text-to-speech verbal confirmations.
+* **Continuous Listening:** Background execution waiting for your prompt.
 
----
+### System & Application Control
+* **Process Management:** Launch and terminate standard Windows applications or third-party software (e.g., Chrome, VS Code, Notepad).
+* **Power & Security:** Voice-triggered commands to lock, sleep, restart, or safely shut down the system.
+* **Hardware Integration:** Direct toggle control for the Windows Camera and instant screenshot capturing.
 
-## 📁 File & Folder Management
-- Open folders
-- Open drives
-- Open File Explorer
-- Navigate through Windows directories
+### File & Directory Navigation
+* Native integration with Windows File Explorer.
+* Direct vocal navigation to key system directories (e.g., Documents, Downloads, local drives).
 
-
-Example Commands:
-- Open D Drive
-- Open Downloads Folder
-- Open Documents
-- Open This PC
+### Hands-Free Hardware Automation
+* **Keyboard Emulation:** Full support for system shortcuts, functional keypresses, and direct text dictation.
+* **Mouse Emulation:** Trigger precise left, right, double clicks, and vertical scrolling on demand.
+* **Peripherals Control:** Dynamic adjustment of screen brightness levels and system volume states.
 
 ---
 
-## 🌐 Browser Automation
-- Open websites
-- Search Google
-- Launch browser automatically
+## Tech Stack & Dependencies
 
-Example Commands:
-- Search Python tutorials
-- Search AI Projects
-- Open YouTube
-- Open GitHub
+VoicePilot leverages a robust suite of Python libraries to bridge speech processing with OS-level execution:
 
----
-
-## ⌨ Keyboard Automation
-Supports keyboard shortcuts and key presses.
-
-Commands include:
-
-- Copy
-- Paste
-- Cut
-- Undo
-- Redo
-- Select All
-- Press Enter
-- Press Tab
-- Press Escape
-- Press Backspace
-- Press Delete
-- Press Space
-- Press Home
-- Press End
-- Press Page Up
-- Press Page Down
-- Press Caps Lock
-- Press Num Lock
-- Press Scroll Lock
-
-Typing Commands:
-
-- Type Hello World
-- Type My Name is Maryam
+* **Core Engine:** Python
+* **Speech Processing:** SpeechRecognition (Audio parsing), pyttsx3 (Offline Text-to-Speech)
+* **OS & Process Automation:** PyAutoGUI (Input emulation), psutil (Process tracking), subprocess (System calls)
+* **Computer Vision:** OpenCV (Camera feed handling)
+* **Hardware Utilities:** screen-brightness-control (Display manipulation)
+* **GUI & Web:** Tkinter (Interface design), webbrowser (Web automation)
 
 ---
 
-## 🖱 Mouse Automation
+## Command Reference
 
-Supports:
-
-- Left Click
-- Right Click
-- Double Click
-- Scroll Up
-- Scroll Down
-
----
-
-## 💡 Brightness Control
-
-Control screen brightness through voice.
-
-Commands:
-
-- Increase Brightness
-- Decrease Brightness
-- Maximum Brightness
-- Minimum Brightness
+| Category | Voice Command Examples | Action Performed |
+| :--- | :--- | :--- |
+| **Applications** | `"Open Chrome"`, `"Open Notepad"`, `"Close Chrome"` | Launches or terminates target processes. |
+| **Browser** | `"Search Python tutorials"`, `"Open YouTube"`, `"Open GitHub"` | Performs web searches or navigates directly to URLs. |
+| **File System** | `"Open Downloads Folder"`, `"Open D Drive"`, `"Open This PC"` | Spawns File Explorer at designated directories. |
+| **Keyboard** | `"Copy"`, `"Paste"`, `"Select All"`, `"Press Enter"` | Simulates system-wide keyboard shortcuts/keys. |
+| **Text Dictation**| `"Type Hello World"` | Injects simulated keystrokes at the cursor position. |
+| **Mouse** | `"Click"`, `"Right Click"`, `"Scroll Down"` | Executes mouse actions at current coordinates. |
+| **Hardware** | `"Increase Brightness"`, `"Mute Volume"`, `"Take Screenshot"`| Dynamically alters system states & captures screen. |
+| **System** | `"Lock Screen"`, `"Sleep Computer"`, `"Open Camera"` | Changes power states or initiates utility features. |
 
 ---
 
-## 🔊 Volume Control
+## Installation & Requirements
 
-Supports:
+### Prerequisites
+* Windows OS
+* Python 3.8 or higher
 
-- Increase Volume
-- Decrease Volume
-- Mute Volume
-- Unmute Volume
-
----
-
-## 📸 Screenshot
-
-Take screenshots instantly.
-
-Command:
-
-- Take Screenshot
-
----
-
-## 📷 Camera Control
-
-Supports opening and closing the Windows Camera.
-
-Commands:
-
-- Open Camera
-- Close Camera
-
----
-
-## 🔒 System Controls
-
-Supports:
-
-- Lock Screen
-- Restart Computer
-- Shutdown Computer
-- Sleep Computer
-
----
-
-# Upcoming Features
-
-The following features are planned for future versions:
-
-- Smart application finder
-- Open any installed software automatically
-- Open any file by voice
-- Open any folder by name
-- AI conversation mode
-- Weather information
-- Time and date queries
-- Calculator
-- Music player controls
-- Email automation
-- WhatsApp automation
-- OCR (Text extraction from images)
-- Face recognition login
-- Voice authentication
-- Multiple language support
-- ChatGPT integration
-- Offline AI mode
-- Smart reminders
-- Alarm system
-- Calendar integration
-
----
-
-# Technologies Used
-
-- Python
-- SpeechRecognition
-- Pyttsx3
-- PyAutoGUI
-- OpenCV
-- Psutil
-- Screen Brightness Control
-- Tkinter
-- Webbrowser
-- Subprocess
-
-# Example Voice Commands
-
-### Applications
-
-- Open Chrome
-- Open Notepad
-- Open VS Code
-- Close Chrome
-
-### Browser
-
-- Search Python Programming
-- Search Machine Learning
-- Open YouTube
-
-### Keyboard
-
-- Copy
-- Paste
-- Undo
-- Select All
-- Press Enter
-- Press Backspace
-- Press Caps Lock
-
-### Mouse
-
-- Click
-- Right Click
-- Double Click
-- Scroll Down
-
-### System
-
-- Increase Brightness
-- Decrease Brightness
-- Increase Volume
-- Take Screenshot
-- Open Camera
-- Lock Screen
-
----
-# Future Goal
-
-The long-term goal of VoicePilot is to become an intelligent desktop assistant capable of understanding natural language and performing complex desktop tasks. Future versions aim to support opening any installed application, locating files and folders by name, conversational AI, smart automation workflows, and seamless integration with modern AI services, providing a hands-free productivity experience.
-
----
-
-## Contributors
-
-- **Maryam Amir**
-- **Zaib**
-
----
-
-## License
-
-This project is developed for educational and academic purposes.
-
-
-
+### Setup Instructions
+1. Clone the repository to your local machine:
+   ```bash
+   git clone [https://github.com/marriez1525-commits/VoicePilot.git](https://github.com/marriez1525-commits/VoicePilot.git)
+   cd VoicePilot
