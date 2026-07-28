@@ -248,13 +248,6 @@ The long-term goal of VoicePilot is to become an intelligent desktop assistant c
 
 ---
 
-## Contributors
-
-- **Maryam Amir**
-- **Zaib**
-
----
-
 ## License
 
 This project is developed for educational and academic purposes.
