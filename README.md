@@ -61,81 +61,58 @@ Example Commands:
 
 ---
 
-## ⌨ Keyboard Automation
-Supports keyboard shortcuts and key presses.
+## 🔑 Key Features
 
-Commands include:
-
-- Copy
-- Paste
-- Cut
-- Undo
-- Redo
-- Select All
-- Press Enter
-- Press Tab
-- Press Escape
-- Press Backspace
-- Press Delete
-- Press Space
-- Press Home
-- Press End
-- Press Page Up
-- Press Page Down
-- Press Caps Lock
-- Press Num Lock
-- Press Scroll Lock
-
-Typing Commands:
-
-- Type Hello World
-- Type My Name is Maryam
+* **🎤 Voice Recognition & Feedback:** Real-time speech-to-text processing paired with customizable text-to-speech audio responses and a continuous listening loop.
+* **💻 Application Management:** Launch and close native Windows tools and third-party software (e.g., *Google Chrome*, *Notepad*, *Calculator*, *VS Code*).
+* **📁 Directory & File Navigation:** Instant voice access to drives, system folders, and File Explorer locations (e.g., *Downloads*, *Documents*, *This PC*, *D: Drive*).
+* **🌐 Web & Browser Automation:** Execute direct web searches via default browsers and launch target URL destinations like *GitHub* or *YouTube*.
+* **⌨️ Keyboard & Input Automation:** Trigger multi-key shortcuts, standard keys (`Enter`, `Tab`, `Caps Lock`, etc.), and direct voice-to-text string typing.
+* **🖱️ Precision Mouse Control:** Programmatic execution of left clicks, right clicks, double clicks, and directional scrolling.
+* **⚙️ Hardware & Display Controls:** Dynamically adjust display brightness, system volume levels, audio mute states, and active camera hardware.
+* **🔒 Windows System Operations:** Instant administrative controls for locking, sleeping, restarting, or shutting down the operating system, plus rapid screen capture.
 
 ---
 
-## 🖱 Mouse Automation
+## 🛠️ Built With
 
-Supports:
-
-- Left Click
-- Right Click
-- Double Click
-- Scroll Up
-- Scroll Down
+* **Core Runtime:** Python
+* **Audio & Speech:** SpeechRecognition, Pyttsx3
+* **System & Input Automation:** PyAutoGUI, Psutil, Screen Brightness Control
+* **Vision & Media:** OpenCV
+* **GUI & Web Services:** Tkinter, Webbrowser, Subprocess
 
 ---
 
-## 💡 Brightness Control
+## 🚀 Voice Command Reference
 
-Control screen brightness through voice.
-
-Commands:
-
-- Increase Brightness
-- Decrease Brightness
-- Maximum Brightness
-- Minimum Brightness
-
----
-
-## 🔊 Volume Control
-
-Supports:
-
-- Increase Volume
-- Decrease Volume
-- Mute Volume
-- Unmute Volume
+| Category | Example Voice Commands |
+| :--- | :--- |
+| **Applications** | `"Open Chrome"`, `"Open VS Code"`, `"Close Notepad"` |
+| **Browser** | `"Search Machine Learning"`, `"Open YouTube"`, `"Open GitHub"` |
+| **System Directories** | `"Open Downloads Folder"`, `"Open D Drive"`, `"Open This PC"` |
+| **Keyboard Input** | `"Copy"`, `"Paste"`, `"Press Enter"`, `"Type Project Status"` |
+| **Mouse Operations** | `"Left Click"`, `"Right Click"`, `"Double Click"`, `"Scroll Down"` |
+| **Hardware & Display** | `"Increase Brightness"`, `"Mute Volume"`, `"Take Screenshot"`, `"Open Camera"` |
+| **System Operations** | `"Lock Screen"`, `"Sleep Computer"`, `"Restart Computer"` |
 
 ---
 
-## 📸 Screenshot
+## 🔮 Project Roadmap
 
-Take screenshots instantly.
+Planned implementations for future releases:
 
-Command:
+* **Dynamic Software Discovery:** Automatic discovery and launch capabilities for any installed application or local directory file by name.
+* **Conversational AI & LLM Integration:** Offline AI interaction mode alongside cloud-based API integrations (e.g., ChatGPT) for contextual reasoning.
+* **Productivity Tools:** Voice-triggered alarms, reminders, calendar sync, OCR text extraction, email automation, and WhatsApp messaging.
+* **Security & Authentication:** Multi-factor local access featuring biometrics (Face Recognition) and Voice-Print Authentication.
 
-- Take Screenshot
+---
+
+## 👥 Contributors
+
+* **Maryam Amir**
+* **Zaib**
 
 ---
 
@@ -255,3 +232,4 @@ This project is developed for educational and academic purposes.
 
 
 
+This project is developed for educational and research purposes.
