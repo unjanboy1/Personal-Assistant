@@ -1,8 +1,63 @@
-# 🎙️ VoicePilot | Next-Gen AI Desktop Assistant
 
-> **An intelligent, hands-free automation framework bridging speech recognition, computer vision, and OS-level system operations on Windows.**
 
-VoicePilot transforms everyday PC interactions into an effortless voice-driven interface. Built on a lightweight, highly responsive Python architecture, VoicePilot translates dynamic spoken commands into real-time system actions—enabling complete desktop control without touching a keyboard or mouse.
+# 🎙️ VoicePilot – AI Desktop Voice Assistant
+
+VoicePilot is a Python-based desktop voice assistant that enables users to control their Windows computer using natural voice commands. It combines speech recognition, text-to-speech, and desktop automation to perform everyday tasks hands-free.
+
+The assistant can launch applications, search the web, control system settings, automate keyboard and mouse actions, and interact with Windows through simple voice commands.
+---
+
+# Features
+
+## 🎤 Voice Recognition
+- Real-time voice command recognition
+- Speech-to-text conversion
+- Text-to-speech responses
+- Continuous listening mode
+
+---
+
+
+## 💻 Application Control
+- Open desktop applications
+- Close running applications
+- Launch Windows built-in programs
+- Open installed software
+
+Example Commands:
+- Open Chrome
+- Open Notepad
+- Open Calculator
+- Close Chrome
+- Close Notepad
+
+---
+
+## 📁 File & Folder Management
+- Open folders
+- Open drives
+- Open File Explorer
+- Navigate through Windows directories
+
+
+Example Commands:
+- Open D Drive
+- Open Downloads Folder
+- Open Documents
+- Open This PC
+
+---
+
+## 🌐 Browser Automation
+- Open websites
+- Search Google
+- Launch browser automatically
+
+Example Commands:
+- Search Python tutorials
+- Search AI Projects
+- Open YouTube
+- Open GitHub
 
 ---
 
@@ -36,25 +91,34 @@ VoicePilot transforms everyday PC interactions into an effortless voice-driven i
 
 | Domain | Technology / Library |
 | :--- | :--- |
-| **Language Runtime** | `Python 3.x` |
-| **Speech Processing** | `SpeechRecognition` • `Pyttsx3` |
-| **Automation & Hardware** | `PyAutoGUI` • `Screen Brightness Control` • `Psutil` |
-| **Vision & Interface** | `OpenCV` • `Tkinter` |
-| **System Operations** | `Subprocess` • `Webbrowser` |
+| **Applications** | `"Open Chrome"`, `"Open VS Code"`, `"Close Notepad"` |
+| **Browser** | `"Search Machine Learning"`, `"Open YouTube"`, `"Open GitHub"` |
+| **System Directories** | `"Open Downloads Folder"`, `"Open D Drive"`, `"Open This PC"` |
+| **Keyboard Input** | `"Copy"`, `"Paste"`, `"Press Enter"`, `"Type Project Status"` |
+| **Mouse Operations** | `"Left Click"`, `"Right Click"`, `"Double Click"`, `"Scroll Down"` |
+| **Hardware & Display** | `"Increase Brightness"`, `"Mute Volume"`, `"Take Screenshot"`, `"Open Camera"` |
+| **System Operations** | `"Lock Screen"`, `"Sleep Computer"`, `"Restart Computer"` |
 
 ---
 
-## ⚡ Command Matrix
+## 🔮 Project Roadmap
 
-| Workstream | Spoken Command Structure | Target Action |
-| :--- | :--- | :--- |
-| **Application Control** | `"Open VS Code"` / `"Close Chrome"` | Manages background process lifecycles. |
-| **Web Navigation** | `"Search Python Tutorials"` | Spawns search query in active browser. |
-| **System Directories** | `"Open Downloads Folder"` | Launches Explorer at target environment. |
-| **Peripheral Typing** | `"Type Status Report Approved"` | Emulates real-time keyboard buffer typing. |
-| **Input Emulation** | `"Copy"` / `"Press Enter"` / `"Scroll Down"` | Fires synthetic mouse & keyboard events. |
-| **Hardware & Power** | `"Increase Brightness"` / `"Lock Screen"` | Adjusts display states & system security locks. |
+Planned implementations for future releases:
+
+* **Dynamic Software Discovery:** Automatic discovery and launch capabilities for any installed application or local directory file by name.
+* **Conversational AI & LLM Integration:** Offline AI interaction mode alongside cloud-based API integrations (e.g., ChatGPT) for contextual reasoning.
+* **Productivity Tools:** Voice-triggered alarms, reminders, calendar sync, OCR text extraction, email automation, and WhatsApp messaging.
+* **Security & Authentication:** Multi-factor local access featuring biometrics (Face Recognition) and Voice-Print Authentication.
 
 ---
 
-## 🚀 Strategic Roadmap
+## 👥 Contributors
+
+* **Maryam Amir**
+* **Zaib**
+
+---
+
+## 📄 License
+
+This project is developed for educational and research purposes.
