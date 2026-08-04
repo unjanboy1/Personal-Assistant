@@ -61,32 +61,35 @@ Example Commands:
 
 ---
 
-## 🔑 Key Features
+## 🌟 Core Architecture & Capabilities
 
-* **🎤 Voice Recognition & Feedback:** Real-time speech-to-text processing paired with customizable text-to-speech audio responses and a continuous listening loop.
-* **💻 Application Management:** Launch and close native Windows tools and third-party software (e.g., *Google Chrome*, *Notepad*, *Calculator*, *VS Code*).
-* **📁 Directory & File Navigation:** Instant voice access to drives, system folders, and File Explorer locations (e.g., *Downloads*, *Documents*, *This PC*, *D: Drive*).
-* **🌐 Web & Browser Automation:** Execute direct web searches via default browsers and launch target URL destinations like *GitHub* or *YouTube*.
-* **⌨️ Keyboard & Input Automation:** Trigger multi-key shortcuts, standard keys (`Enter`, `Tab`, `Caps Lock`, etc.), and direct voice-to-text string typing.
-* **🖱️ Precision Mouse Control:** Programmatic execution of left clicks, right clicks, double clicks, and directional scrolling.
-* **⚙️ Hardware & Display Controls:** Dynamically adjust display brightness, system volume levels, audio mute states, and active camera hardware.
-* **🔒 Windows System Operations:** Instant administrative controls for locking, sleeping, restarting, or shutting down the operating system, plus rapid screen capture.
+### 🎤 Intelligent Speech Processing
+* **Real-Time Speech-to-Text (STT):** High-accuracy voice capture utilizing continuous background listening loops.
+* **Text-to-Speech (TTS) Engine:** Low-latency auditory feedback for active status verification and execution confirmation.
+
+### 💻 OS & Application Orchestration
+* **App Lifecycle Control:** Seamlessly launch, focus, or terminate system processes (e.g., *VS Code*, *Google Chrome*, *Notepad*, *Calculator*).
+* **FileSystem Navigation:** Direct, hands-free access to root drives (`C:`, `D:`), system libraries (*Downloads*, *Documents*), and File Explorer paths.
+
+### 🌐 Browser & Web Automation
+* **Automated Web Searching:** Direct voice-query execution targeting default browser instances.
+* **Instant Endpoint Navigation:** Immediate redirection to developer portals and media platforms like *GitHub*, *Stack Overflow*, and *YouTube*.
+
+### ⌨️ Advanced Peripheral Automation
+* **Keystroke & Shortcut Emulation:** Execute complex hotkey combinations, structural key presses (`Tab`, `Escape`, `Caps Lock`), and instant copy/paste/undo operations.
+* **Voice Dictation:** Dynamic text insertion—convert spoken dialogue directly into typed strings within any active text buffer.
+* **Precision Cursor Dynamics:** Software-driven execution of primary/secondary clicks, double-clicks, and vertical scrolling.
+
+### ⚙️ Hardware & Display Management
+* **Display & Audio Tuning:** Dynamic runtime adjustments for monitor brightness levels, system master volume, and instant audio muting.
+* **Media & Utility Operations:** Immediate screen capture generation and native Windows Camera device controls.
+* **Power & Security Protocol:** Instant voice-triggered execution of system lock, sleep, reboot, and power-off sequences.
 
 ---
 
-## 🛠️ Built With
+## 🛠️ Technology Stack
 
-* **Core Runtime:** Python
-* **Audio & Speech:** SpeechRecognition, Pyttsx3
-* **System & Input Automation:** PyAutoGUI, Psutil, Screen Brightness Control
-* **Vision & Media:** OpenCV
-* **GUI & Web Services:** Tkinter, Webbrowser, Subprocess
-
----
-
-## 🚀 Voice Command Reference
-
-| Category | Example Voice Commands |
+| Domain | Technology / Library |
 | :--- | :--- |
 | **Applications** | `"Open Chrome"`, `"Open VS Code"`, `"Close Notepad"` |
 | **Browser** | `"Search Machine Learning"`, `"Open YouTube"`, `"Open GitHub"` |
@@ -116,120 +119,6 @@ Planned implementations for future releases:
 
 ---
 
-## 📷 Camera Control
-
-Supports opening and closing the Windows Camera.
-
-Commands:
-
-- Open Camera
-- Close Camera
-
----
-
-## 🔒 System Controls
-
-Supports:
-
-- Lock Screen
-- Restart Computer
-- Shutdown Computer
-- Sleep Computer
-
----
-
-# Upcoming Features
-
-The following features are planned for future versions:
-
-- Smart application finder
-- Open any installed software automatically
-- Open any file by voice
-- Open any folder by name
-- AI conversation mode
-- Weather information
-- Time and date queries
-- Calculator
-- Music player controls
-- Email automation
-- WhatsApp automation
-- OCR (Text extraction from images)
-- Face recognition login
-- Voice authentication
-- Multiple language support
-- ChatGPT integration
-- Offline AI mode
-- Smart reminders
-- Alarm system
-- Calendar integration
-
----
-
-# Technologies Used
-
-- Python
-- SpeechRecognition
-- Pyttsx3
-- PyAutoGUI
-- OpenCV
-- Psutil
-- Screen Brightness Control
-- Tkinter
-- Webbrowser
-- Subprocess
-
-# Example Voice Commands
-
-### Applications
-
-- Open Chrome
-- Open Notepad
-- Open VS Code
-- Close Chrome
-
-### Browser
-
-- Search Python Programming
-- Search Machine Learning
-- Open YouTube
-
-### Keyboard
-
-- Copy
-- Paste
-- Undo
-- Select All
-- Press Enter
-- Press Backspace
-- Press Caps Lock
-
-### Mouse
-
-- Click
-- Right Click
-- Double Click
-- Scroll Down
-
-### System
-
-- Increase Brightness
-- Decrease Brightness
-- Increase Volume
-- Take Screenshot
-- Open Camera
-- Lock Screen
-
----
-# Future Goal
-
-The long-term goal of VoicePilot is to become an intelligent desktop assistant capable of understanding natural language and performing complex desktop tasks. Future versions aim to support opening any installed application, locating files and folders by name, conversational AI, smart automation workflows, and seamless integration with modern AI services, providing a hands-free productivity experience.
-
----
-
-## License
-
-This project is developed for educational and academic purposes.
-
-
+## 📄 License
 
 This project is developed for educational and research purposes.
